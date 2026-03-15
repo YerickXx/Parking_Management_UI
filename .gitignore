@@ -1,1 +1,10 @@
-/Project_2/nbproject/private/
+build/
+dist/
+nbproject/private/
+bin/
+out/
+*.class
+*.txt
+*.exe
+Debug/
+Release/
