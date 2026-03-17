@@ -1,15 +1,25 @@
 
 package Logic;
-
-public class Logic {
-    private boolean ValidacionInput(String str)
+  import java.util.ArrayList;
+ import Entities.Motocicleta;
+ import Entities.Automovil;
+ import Entities.Camion;
+public class Logic implements Interfaces.Validaciones{
+    Automovil auto;
+    Motocicleta moto;
+    Camion camion;
+    ArrayList vehiculoParqueo = new ArrayList();
+    
+    
+    private boolean ValidarIntento(String str)
     {
-        return str.matches("^[A-Za-z]{3}[0-9]{3}+$");
+        String word = str.trim();
+        return word.matches("^[A-Za-z]{3}[0-9]{3}$");
     }
     
-    public boolean EnvioDeValidacion(String str)
+    @Override
+    public boolean ValidacionInput(String str)
     {
-        boolean result =  this.ValidacionInput(str);
-        return result;
+        return ValidarIntento(str);
     }
 }

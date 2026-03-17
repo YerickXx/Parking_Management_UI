@@ -165,7 +165,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
-           if(L.EnvioDeValidacion(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
+           if(L.ValidacionInput(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
            {
             this.dispose(); // elimina de la vista la ventana actual
             new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
@@ -178,10 +178,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Input_PlacaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_PlacaRegistroActionPerformed
-        if(!Input_PlacaRegistro.getText().isEmpty())
-        {
-            // llamado funcion de logica
-        }        
+       
     }//GEN-LAST:event_Input_PlacaRegistroActionPerformed
 
     /**
