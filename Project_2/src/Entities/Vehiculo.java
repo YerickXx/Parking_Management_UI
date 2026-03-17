@@ -1,6 +1,6 @@
 // Parent class for Motocicleta, Automovil and Camion
 package Entities;
-
+import java.time.LocalDateTime;
 /**
  *
  * @author yeric
@@ -10,23 +10,26 @@ public class Vehiculo {
     private String Placa;
     private String Servicio;
     private double Tarifa_base;
-    private boolean Descuento;
+    private LocalDateTime horaEntrada;
+    private LocalDateTime horaSalida;
+ 
     
     public Vehiculo() // builder
     {
         this.Placa = "";
         this.Servicio = "";
         this.Tarifa_base = 0.0;
-        this.Descuento = false;
+        this.horaEntrada = LocalDateTime.now();
+        this.horaSalida = LocalDateTime.now();
     }
     
     public Vehiculo(String vPlaca, String vServicio, 
-            double vTarifa_base, boolean vDescuento)
+            double vTarifa_base, boolean vDescuento, LocalDateTime vhoraEntrada, LocalDateTime vhoraSalida)
     {
         this.Placa = vPlaca;
         this.Servicio = vServicio;
         this.Tarifa_base = vTarifa_base;
-        this.Descuento = vDescuento;
+ 
         
     }
     
@@ -56,13 +59,20 @@ public class Vehiculo {
         this.Tarifa_base = Tarifa_base;
     }
 
-    public boolean isDescuento() {
-        return Descuento;
+    public LocalDateTime getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public void setDescuento(boolean Descuento) {
-        this.Descuento = Descuento;
+    public void setHoraEntrada(LocalDateTime horaEntrada) {
+        this.horaEntrada = horaEntrada;
     }
-    
-    
+
+    public LocalDateTime getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(LocalDateTime horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+      
 }
