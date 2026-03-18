@@ -15,6 +15,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
      */
     public Entrada_Parqueo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,7 +33,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         Input_PlacaRegistro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Input_Servicio = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
@@ -47,6 +48,11 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         Seleccion_Vehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automovil", "Motocicleta", "Camion" }));
+        Seleccion_Vehiculo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Seleccion_VehiculoItemStateChanged(evt);
+            }
+        });
         Seleccion_Vehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Seleccion_VehiculoActionPerformed(evt);
@@ -88,13 +94,18 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(150, 260, 130, 18);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Dia", "Por Hora" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(170, 280, 90, 26);
+        Input_Servicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Dia", "Por Hora" }));
+        Input_Servicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Input_ServicioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Input_Servicio);
+        Input_Servicio.setBounds(170, 280, 90, 26);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(153, 153, 153));
-        jButton1.setText("Registrar Vehiculo");
+        jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -151,12 +162,18 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Seleccion_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoActionPerformed
-        // TODO add your handling code here:
+        if(!Input_PlacaRegistro.getText().isEmpty()){
+         if(Seleccion_Vehiculo.getSelectedItem().toString().equalsIgnoreCase("Automovil"))
+         {
+             GUI.Automovil.Vehiculo();
+             //L.nuevoAutoMovil(Seleccion_Vehiculo.getSelectedItem().toString());
+         }}
         
     }//GEN-LAST:event_Seleccion_VehiculoActionPerformed
 
     // Boton para regresar al menu principal
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+
         this.dispose(); // elimina de la vista la ventana actual
         new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
     }//GEN-LAST:event_jToggleButton1ActionPerformed
@@ -167,19 +184,34 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         {
            if(L.ValidacionInput(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
            {
+            String selected = Seleccion_Vehiculo.getSelectedItem().toString();
+            String service = Input_Servicio.getSelectedItem().toString();
+            L.almacenarTemp(Input_PlacaRegistro.getText(),selected,service); // guardado temporal de estos inputs
             this.dispose(); // elimina de la vista la ventana actual
-            new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
+            new GUI.Automovil().setVisible(true); // genera la vista de la ventana del menu principal
            }
+           else{jOptionPane1.showMessageDialog(this,"Debe ingresar una placa valida! (abc123)");}
         }else
         {
-            jOptionPane1.showMessageDialog(this,"Debe ingresar una placa que ademas cumpla con el formato (abc123)");
+            jOptionPane1.showMessageDialog(this,"El ingreso de placa es de caracter obligatorio!");
         }  
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Input_PlacaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_PlacaRegistroActionPerformed
        
     }//GEN-LAST:event_Input_PlacaRegistroActionPerformed
+
+    private void Seleccion_VehiculoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoItemStateChanged
+
+    }//GEN-LAST:event_Seleccion_VehiculoItemStateChanged
+
+    private void Input_ServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_ServicioActionPerformed
+        // TODO add your handling code here:
+         if(!Input_PlacaRegistro.getText().isEmpty()){
+            Input_Servicio.getSelectedItem().toString();}
+    }//GEN-LAST:event_Input_ServicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,10 +250,10 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Input_PlacaRegistro;
+    private javax.swing.JComboBox<String> Input_Servicio;
     private javax.swing.JComboBox<String> Seleccion_Vehiculo;
     private javax.swing.JLabel imagenEntrada;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
