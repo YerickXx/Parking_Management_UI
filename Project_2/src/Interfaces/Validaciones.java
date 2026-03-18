@@ -2,5 +2,6 @@
 package Interfaces;
 
 public interface Validaciones {
-    boolean ValidacionInput(String str);
+    boolean ValidacionInputAlphaNum(String str);
+    //boolean ValidacionInputTexto(String str);
 }

@@ -20,12 +20,12 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, 
     }
     
     @Override
-    public boolean ValidacionInput(String str)
+    public boolean ValidacionInputAlphaNum(String str)
     {
         return ValidarIntento(str);
     }
     
-    public void CreacionCehiculo()
+    public void CreacionVehiculo()
     {
         
     }

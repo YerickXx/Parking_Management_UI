@@ -256,7 +256,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
-           if(L.ValidacionInput(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
+           if(L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
            {
            
            }
