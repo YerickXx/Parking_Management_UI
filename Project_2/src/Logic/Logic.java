@@ -25,39 +25,10 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, 
         return ValidarIntento(str);
     }
     
-    // Guardado temporal
-    @Override
-    public String almacenarTemp(String... str) // recibo dinamico de strings
+    public void CreacionCehiculo()
     {
-        for(String strs : str)
-        {
-            return strs;
-        }
-        return "";
-    }
-    
-    // Creacion del Automovil (Urge terminar prioridad maxima)
-    private void crearAutomovil()
-    {
-        String a = almacenarTemp();
-        String b = nuevoAutoMovil();
-        vehiculoParqueo.add(a);
-        vehiculoParqueo.add(b);
-        for(var da : vehiculoParqueo)
-        {
-            
-        }
         
     }
-    
-    @Override
-    public String nuevoAutoMovil(String... str)
-    {
-        for(String strs : str)
-        {
-            return strs;
-        }
-        return "";
-    }
+   
     
 }
