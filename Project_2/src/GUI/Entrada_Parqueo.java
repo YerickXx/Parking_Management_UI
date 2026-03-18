@@ -5,14 +5,12 @@
 package GUI;
 import Logic.Logic;
 import Entities.Automovil;
-import java.time.LocalDateTime;
 /**
  *
  * @author yeric
  */
 public class Entrada_Parqueo extends javax.swing.JFrame {
     Logic L = new Logic();
-    Automovil v = new Automovil();
     /**
      * Creates new form Entrada_Parqueo
      */
@@ -28,6 +26,32 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jRadioButton3.setVisible(false);
         setLocationRelativeTo(null);
     }
+    
+    public void getElementosVehiculo() // funcion para tomar los valores del Automovil
+    {
+        Seleccion_Vehiculo.getSelectedItem().toString();
+        Input_PlacaRegistro.getText();
+        Input_Servicio.getSelectedItem();
+        Input_Marca.getText();
+        Input_Modelo.getText();
+        Seleccion_Gas.getSelectedItem();
+    }
+        public void getElementosMoto() // funcion para tomar los valores de la moto
+    {
+        Seleccion_Vehiculo.getSelectedItem().toString();
+        Input_PlacaRegistro.getText();
+        Input_Servicio.getSelectedItem();
+        Input_Marca.getText();
+    }
+        
+    public void getElementosCamion() // funcion para tomar los valores del camion
+    {
+        Seleccion_Vehiculo.getSelectedItem().toString();
+        Input_PlacaRegistro.getText();
+        Input_Servicio.getSelectedItem();
+        Input_Marca.getText();
+        Grupo_Ejes.getSelectedItem().toString();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +62,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Grupo_Ejes = new javax.swing.JComboBox<>();
         Botones_Camion = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Seleccion_Vehiculo = new javax.swing.JComboBox<>();
@@ -61,7 +85,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         imagenEntrada = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Grupo_Ejes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         Botones_Camion.add(jRadioButton1);
         Botones_Camion.add(jRadioButton2);
@@ -132,7 +156,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(153, 153, 153));
-        jButton1.setText("Siguiente");
+        jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -256,11 +280,32 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
-           if(L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) // llamado de la funcion de validacion
-           {
+           if(L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText()))
+           {  
+           String ops = Seleccion_Vehiculo.getSelectedItem().toString();
            
-           }
-           else{jOptionPane1.showMessageDialog(this,"Debe ingresar una placa valida! (abc123)");}
+           switch(ops)
+           {
+               case "Automovil" -> 
+               {
+                   getElementosVehiculo();
+                    this.dispose();
+                    new GUI.mainMenu().setVisible(true);
+               }
+               case "Motocicleta" -> 
+               {
+                   getElementosMoto();
+                   this.dispose();
+                   new GUI.mainMenu().setVisible(true);
+               }
+               case "Camion" -> 
+               {
+                   getElementosCamion();
+                this.dispose();
+                new GUI.mainMenu().setVisible(true);
+               }
+           }}
+           //else{jOptionPane1.showMessageDialog(this,"Debe ingresar una placa valida! (abc123)");}
         }else
         {
             jOptionPane1.showMessageDialog(this,"El ingreso de placa es de caracter obligatorio!");
@@ -312,6 +357,17 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton1.setVisible(true);
                 jRadioButton2.setVisible(true);
                 jRadioButton3.setVisible(true);
+            }
+            case "Seleccione" ->
+            {
+                        Seleccion_Gas.setVisible(false);
+        Input_Marca.setVisible(false);
+        Input_Modelo.setVisible(false);
+        Label_marca.setVisible(false);
+        Label_modelo.setVisible(false);
+        jRadioButton1.setVisible(false);
+        jRadioButton2.setVisible(false);
+        jRadioButton3.setVisible(false);
             }
         }
         
@@ -372,6 +428,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Botones_Camion;
+    private javax.swing.JComboBox<String> Grupo_Ejes;
     private javax.swing.JTextField Input_Marca;
     private javax.swing.JTextField Input_Modelo;
     private javax.swing.JTextField Input_PlacaRegistro;
@@ -382,7 +439,6 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Seleccion_Vehiculo;
     private javax.swing.JLabel imagenEntrada;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
