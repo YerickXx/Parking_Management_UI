@@ -3,14 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+
 import Logic.Logic;
 import Entities.Automovil;
+
 /**
  *
  * @author yeric
  */
 public class Entrada_Parqueo extends javax.swing.JFrame {
+
     Logic L = new Logic();
+
     /**
      * Creates new form Entrada_Parqueo
      */
@@ -24,9 +28,10 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jRadioButton1.setVisible(false);
         jRadioButton2.setVisible(false);
         jRadioButton3.setVisible(false);
+        LabelCamion.setVisible(false);
         setLocationRelativeTo(null);
     }
-    
+
     public void getElementosVehiculo() // funcion para tomar los valores del Automovil
     {
         String Avehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
@@ -35,25 +40,31 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         String marca = Input_Caracteristica1.getText();
         String modelo = Input_Caracteristica2.getText();
         String combustible = Seleccion_Gas.getSelectedItem().toString();
-        L.creacionVehiculos(Avehiculo,Aplaca,Aservicio,marca,modelo,combustible);
+        L.creacionVehiculos(Avehiculo, Aplaca, Aservicio, marca, modelo, combustible);
     }
-        public void getElementosMoto() // funcion para tomar los valores de la moto
+
+    public void getElementosMoto() // funcion para tomar los valores de la moto
     {
         String Mvehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
         String Mplaca = Input_PlacaRegistro.getText();
         String Mservicio = Input_Servicio.getSelectedItem().toString();
         String cilindraje = Input_Caracteristica1.getText();
-        L.creacionVehiculos(Mvehiculo,Mplaca,Mservicio,cilindraje);
+        L.creacionVehiculos(Mvehiculo, Mplaca, Mservicio, cilindraje);
     }
-        
+
     public void getElementosCamion() // funcion para tomar los valores del camion
     {
-        String Cvehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
-        String Cplaca = Input_PlacaRegistro.getText();
-        String Cservicio = Input_Servicio.getSelectedItem().toString();
-        String carga = Input_Caracteristica1.getText();
-        String ejes = Grupo_Ejes.getSelectedItem().toString();
-        L.creacionVehiculos(Cvehiculo,Cplaca,Cservicio,carga,ejes);
+        boolean d = L.ValidacionDouble(Input_Caracteristica1.getText());
+        if (!d) {
+            jOptionPane1.showMessageDialog(this, "Debe digitar una capacidad de cargar valida (ej: 23.1)");
+        } else {
+            String Cvehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
+            String Cplaca = Input_PlacaRegistro.getText();
+            String Cservicio = Input_Servicio.getSelectedItem().toString();
+            String carga = Input_Caracteristica1.getText();
+            String ejes = Botones_Camion.getSelection().getActionCommand();
+            L.creacionVehiculos(Cvehiculo, Cplaca, Cservicio, carga, ejes);
+        }
     }
 
     /**
@@ -85,6 +96,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        LabelCamion = new javax.swing.JLabel();
         imagenEntrada = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
 
@@ -218,22 +230,45 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jPanel1.add(Label_modelo);
         Label_modelo.setBounds(180, 360, 210, 15);
 
-        jRadioButton1.setText("2 Ejes");
+        jRadioButton1.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton1.setText("2 ");
+        jRadioButton1.setActionCommand("2");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(260, 180, 80, 21);
+        jRadioButton1.setBounds(260, 180, 80, 20);
 
-        jRadioButton2.setText("3 a 4 Ejes");
+        jRadioButton2.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton2.setText("3");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(260, 200, 72, 21);
+        jRadioButton2.setBounds(260, 200, 72, 20);
 
-        jRadioButton3.setText("6 Ejes o mas");
+        jRadioButton3.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton3.setText("6");
+        jRadioButton3.setActionCommand("2");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton3);
-        jRadioButton3.setBounds(260, 220, 100, 21);
+        jRadioButton3.setBounds(260, 220, 100, 20);
+
+        LabelCamion.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        LabelCamion.setText("Cantidad de Ejes");
+        jPanel1.add(LabelCamion);
+        LabelCamion.setBounds(220, 160, 120, 15);
 
         imagenEntrada.setFont(new java.awt.Font("Georgia Pro", 1, 12)); // NOI18N
         imagenEntrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -264,12 +299,12 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Seleccion_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoActionPerformed
-        if(!Input_PlacaRegistro.getText().isEmpty()){
-         if(Seleccion_Vehiculo.getSelectedItem().toString().equalsIgnoreCase("Automovil"))
-         {
+        if (!Input_PlacaRegistro.getText().isEmpty()) {
+            if (Seleccion_Vehiculo.getSelectedItem().toString().equalsIgnoreCase("Automovil")) {
 
-         }}
-        
+            }
+        }
+
     }//GEN-LAST:event_Seleccion_VehiculoActionPerformed
 
     // Boton para regresar al menu principal
@@ -281,56 +316,50 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Boton para registrar el vehiculo y regresar al menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
+        if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
-           if(L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText()))
-           {  
-           String ops = Seleccion_Vehiculo.getSelectedItem().toString();
-           
-           switch(ops)
-           {
-               case "Automovil" -> 
-               {
-                   getElementosVehiculo();
-                    this.dispose();
-                    new GUI.mainMenu().setVisible(true);
-                    break;
-               }
-               case "Motocicleta" -> 
-               {
-                   getElementosMoto();
-                   this.dispose();
-                   new GUI.mainMenu().setVisible(true);
-                   break;
-               }
-               case "Camion" -> 
-               {
-                   getElementosCamion();
-                this.dispose();
-                new GUI.mainMenu().setVisible(true);
-                break;
-               }
-           }}
-           else{jOptionPane1.showMessageDialog(this,"Debe ingresar una placa valida! (abc123)");}
-        }else
-        {
-            jOptionPane1.showMessageDialog(this,"El ingreso de placa es de caracter obligatorio!");
-        }  
-        
-        
+            if (L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) {
+                String ops = Seleccion_Vehiculo.getSelectedItem().toString();
+
+                switch (ops) {
+                    case "Automovil" -> {
+                        getElementosVehiculo();
+                        this.dispose();
+                        new GUI.mainMenu().setVisible(true);
+                        break;
+                    }
+                    case "Motocicleta" -> {
+                        getElementosMoto();
+                        this.dispose();
+                        new GUI.mainMenu().setVisible(true);
+                        break;
+                    }
+                    case "Camion" -> {
+                        getElementosCamion();
+                        this.dispose();
+                        new GUI.mainMenu().setVisible(true);
+                        break;
+                    }
+                }
+            } else {
+                jOptionPane1.showMessageDialog(this, "Debe ingresar una placa valida! (abc123)");
+            }
+        } else {
+            jOptionPane1.showMessageDialog(this, "El ingreso de placa es de caracter obligatorio!");
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Input_PlacaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_PlacaRegistroActionPerformed
-       
+
     }//GEN-LAST:event_Input_PlacaRegistroActionPerformed
 
     private void Seleccion_VehiculoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoItemStateChanged
-        
+
         String op = Seleccion_Vehiculo.getSelectedItem().toString();
-        switch(op)
-        {
-            case "Automovil" -> 
-            {
+        switch (op) {
+            case "Automovil" -> {
                 Seleccion_Gas.setVisible(true);
                 Input_Caracteristica1.setVisible(true);
                 Input_Caracteristica2.setVisible(true);
@@ -341,8 +370,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton3.setVisible(false);
                 break;
             }
-            case "Motocicleta" -> 
-            {
+            case "Motocicleta" -> {
                 Label_marca.setText("Ingrese el cilindraje");
                 Input_Caracteristica1.setVisible(true);
                 Label_marca.setVisible(true);
@@ -354,8 +382,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton3.setVisible(false);
                 break;
             }
-            case "Camion" -> 
-            {
+            case "Camion" -> {
                 Label_marca.setText("Ingrese la capacidad");
                 Input_Caracteristica1.setVisible(true);
                 Label_marca.setVisible(true);
@@ -365,22 +392,22 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton1.setVisible(true);
                 jRadioButton2.setVisible(true);
                 jRadioButton3.setVisible(true);
+                LabelCamion.setVisible(true);
                 break;
             }
-            case "Seleccione" ->
-            {
-                        Seleccion_Gas.setVisible(false);
-        Input_Caracteristica1.setVisible(false);
-        Input_Caracteristica2.setVisible(false);
-        Label_marca.setVisible(false);
-        Label_modelo.setVisible(false);
-        jRadioButton1.setVisible(false);
-        jRadioButton2.setVisible(false);
-        jRadioButton3.setVisible(false);
-        break;
+            case "Seleccione" -> {
+                Seleccion_Gas.setVisible(false);
+                Input_Caracteristica1.setVisible(false);
+                Input_Caracteristica2.setVisible(false);
+                Label_marca.setVisible(false);
+                Label_modelo.setVisible(false);
+                jRadioButton1.setVisible(false);
+                jRadioButton2.setVisible(false);
+                jRadioButton3.setVisible(false);
+                break;
             }
         }
-        
+
     }//GEN-LAST:event_Seleccion_VehiculoItemStateChanged
 
     private void Input_ServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_ServicioActionPerformed
@@ -396,13 +423,21 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }//GEN-LAST:event_Seleccion_GasActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
+        jRadioButton2.setActionCommand("2");
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        jRadioButton1.setActionCommand("1");
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        jRadioButton3.setActionCommand("3");
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void Registro(){
+    public static void Registro() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -431,8 +466,9 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
             public void run() {
                 new Entrada_Parqueo().setVisible(true);
             }
-        });}
-    
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Botones_Camion;
     private javax.swing.JComboBox<String> Grupo_Ejes;
@@ -440,6 +476,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private javax.swing.JTextField Input_Caracteristica2;
     private javax.swing.JTextField Input_PlacaRegistro;
     private javax.swing.JComboBox<String> Input_Servicio;
+    private javax.swing.JLabel LabelCamion;
     private javax.swing.JLabel Label_marca;
     private javax.swing.JLabel Label_modelo;
     private javax.swing.JComboBox<String> Seleccion_Gas;

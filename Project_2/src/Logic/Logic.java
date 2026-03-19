@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, Interfaces.GuardadoTemporal{
+public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
      List<Vehiculo> vehiculos = new ArrayList<>();
        
     // Validacion Placa
@@ -16,13 +16,39 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, 
         String word = str.trim();
         return word.matches("^[A-Za-z]{3}[0-9]{3}$");
     }
-    
     @Override
     public boolean ValidacionInputAlphaNum(String str)
     {
         return ValidarIntento(str);
     }
     
+    //Validacion texto
+        private boolean ValidarTexto(String str)
+    {
+         String palabra = str.trim();
+         return palabra.matches("^[A-Za-z]+$");
+    }
+    
+    @Override
+    public boolean ValidacionInputTexto(String str)
+    {
+        return ValidarTexto(str);
+    }
+    
+    // Validacion de doubles
+    private boolean validarDouble(String str)
+    {
+        String valorDecimal = str.trim();
+        return valorDecimal.matches("^\\d*\\.\\d+$"); // Regex para validar si el input es double
+    }
+    
+    @Override
+    public boolean ValidacionDouble(String str)
+    {
+        return validarDouble(str);
+    }
+    
+    // Metodo para crear vehiculos 
     @Override
     public void creacionVehiculos(String... str)
     {   
@@ -35,7 +61,7 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, 
        {
            case "Automovil" -> 
            {
-               creacionYguardadoAutomovil(str);
+               creacionYguardadoAutomovil(str); 
             break;
            }
            
@@ -102,8 +128,8 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos, 
     {
       String Cplaca = str[1];
       String Cservicio = str[2];
-      int ejes = Integer.parseInt(str[3]);
-      double capacidad = Double.parseDouble(str[4]);
+      int ejes = Integer.parseInt(str[4]);
+      double capacidad = Double.parseDouble(str[3]);
       
       
       LocalDateTime Centrada = LocalDateTime.now();
