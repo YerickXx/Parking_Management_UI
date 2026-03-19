@@ -21,16 +21,6 @@ The project is built using a **Layered Architecture** and **Interface-Based Desi
 
 ---
 
-### 🚀 Roadmap
-- [x] Professional project structure & package initialization.
-- [x] Implementation of Layered Architecture folders.
-- [ ] **Current Phase:** UML Diagramming (Class & Case Use diagrams).
-- [ ] Definition of core Interfaces (`IParkingService`, `IRepository`).
-- [ ] Development of the Main Dashboard (GUI).
-- [ ] Logic implementation for automated pricing and occupancy.
-
----
-
 ### 🛠️ Tech Stack
 * **Language:** Java 17+
 * **Framework:** Java Swing / AWT
