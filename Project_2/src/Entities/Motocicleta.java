@@ -1,6 +1,6 @@
 // class Motocicleta extends atributes from Vehiculo and add two more personal atributes
 package Entities;
-
+import java.time.LocalDateTime;
 /**
  *
  * @author yeric
@@ -16,8 +16,10 @@ public class Motocicleta extends Vehiculo {
         this.Tipo_Moto = "";
     }
     
-    public Motocicleta(int mCilindraje,String mTipo)
+    public Motocicleta(String placa, String servicio, double total, boolean descuento,LocalDateTime entrada,
+            LocalDateTime salida,int mCilindraje,String mTipo)
     {
+        super(placa, servicio,total,descuento,entrada,salida);
         this.Cilindraje = mCilindraje;
         this.Tipo_Moto = mTipo;
     }

@@ -1,6 +1,7 @@
 // class Truck extends atributes from Vehiculo and add two more personal atributes
 package Entities;
-
+import java.time.LocalDateTime;
+        
 /**
  *
  * @author yeric
@@ -14,8 +15,10 @@ public class Camion extends Vehiculo {
     this.Capacidad_Carga = 0.0;
     this.Numero_Ejes = 0;
     }
-    public Camion(double cCapacidad_Carga, int cNumero_Ejes)
+    public Camion(String placa, String servicio, double total,boolean descuento,
+            LocalDateTime entrada, LocalDateTime salida,double cCapacidad_Carga, int cNumero_Ejes)
     {
+        super(placa, servicio,total,descuento,entrada,salida);
         this.Capacidad_Carga = cCapacidad_Carga;
         this.Numero_Ejes = cNumero_Ejes;
     }

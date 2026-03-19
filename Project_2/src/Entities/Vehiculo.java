@@ -12,6 +12,7 @@ public class Vehiculo {
     private double Tarifa_base;
     private LocalDateTime horaEntrada;
     private LocalDateTime horaSalida;
+    private boolean descuento;
  
     
     public Vehiculo() // builder
@@ -21,6 +22,7 @@ public class Vehiculo {
         this.Tarifa_base = 0.0;
         this.horaEntrada = LocalDateTime.now();
         this.horaSalida = LocalDateTime.now();
+        this.descuento = false;
     }
     
     public Vehiculo(String vPlaca, String vServicio, 
@@ -29,7 +31,9 @@ public class Vehiculo {
         this.Placa = vPlaca;
         this.Servicio = vServicio;
         this.Tarifa_base = vTarifa_base;
- 
+        this.descuento = vDescuento;
+        this.horaEntrada = vhoraEntrada;
+        this.horaSalida = vhoraSalida;
         
     }
     
@@ -73,6 +77,14 @@ public class Vehiculo {
 
     public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
+    }
+
+    public boolean getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(boolean descuento) {
+        this.descuento = descuento;
     }
       
 }

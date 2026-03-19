@@ -1,6 +1,6 @@
 // class Automovil extends atributes from Vehiculo and add three more personal atributes
 package Entities;
-
+import java.time.LocalDateTime;
 /**
  *
  * @author yeric
@@ -18,8 +18,10 @@ public class Automovil extends Vehiculo {
         this.Marca = "";
     }
     
-    public Automovil(String aTipo_Combustible, String aModelo, String aMarca) 
+    public Automovil(String placa,String servicio,LocalDateTime entrada, LocalDateTime salida,double total,boolean descuento, 
+            String aTipo_Combustible, String aModelo, String aMarca) 
     {
+        super(placa, servicio,total,descuento,entrada,salida);
         this.Tipo_Combustible = aTipo_Combustible;
         this.Modelo = aModelo;
         this.Marca = aMarca;
