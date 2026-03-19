@@ -3,7 +3,7 @@
 ### 📋 Overview
 This is a professional-grade desktop application developed in **Java**. Unlike standard console applications, this version implements a full **Graphical User Interface (GUI)** using Swing and follows strict software engineering principles to ensure scalability and maintainability.
 
-> **Status:** 🚧 In Development (Design & Architecture Phase)
+> **Status:** 🚧 In Development
 
 ---
 
