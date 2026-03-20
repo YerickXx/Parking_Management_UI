@@ -6,9 +6,16 @@ import Entities.Vehiculo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import Data.Data;
 
 public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
-     List<Vehiculo> vehiculos = new ArrayList<>();
+     public List<Vehiculo> vehiculos = new ArrayList<>();
+     double tarifaDiaAutomovil = 6000.0;
+     double tarifaDiaCamion = 6000.0;
+     double tarifaDiaMotocicleta = 3000.0;
+     double tarifaHoraAuto = 600.0;
+     double tarifaHoraCamion = 600.0;
+     double tarifaHoraMotocicleta = 500.0;
        
     // Validacion Placa
     private boolean ValidarIntento(String str)
@@ -61,7 +68,9 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
        {
            case "Automovil" -> 
            {
-               creacionYguardadoAutomovil(str); 
+               if(str[1].equalsIgnoreCase("Por dia"))
+               {creacionYguardadoAutomovil(str); 
+               }else{creacionYguardadoAutomovilHora(str);}
             break;
            }
            
@@ -92,14 +101,54 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
      
       LocalDateTime Aentrada = LocalDateTime.now();
       LocalDateTime Asalida = null;
-      double tarifa = 6000.0;
+      double tarifa = tarifaDiaAutomovil;
       boolean descuentoA = false;
       
       Automovil nuevo_vehiculo = new Automovil(Aplaca,Aservicio,Aentrada,Asalida,tarifa,descuentoA
               ,combustible,modelo,marca);
       vehiculos.add(nuevo_vehiculo);
-        System.out.println("Guardado!");
+      GuardarVehiculos(vehiculos);
     }  
+    
+    @Override 
+    public void creacionYguardadoAutomovilHora(String... str)
+        {
+              String Aplaca = str[1];
+      String Aservicio = str[2];
+      String marca = str[3];
+      String modelo = str[4];
+      String combustible = str[5];
+     
+      LocalDateTime Aentrada = LocalDateTime.now();
+      LocalDateTime Asalida = null;
+      double tarifa = tarifaHoraAuto;
+      boolean descuentoA = false;
+      
+      Automovil nuevo_vehiculo = new Automovil(Aplaca,Aservicio,Aentrada,Asalida,tarifa,descuentoA
+              ,combustible,modelo,marca);
+      vehiculos.add(nuevo_vehiculo);
+      GuardarVehiculos(vehiculos);
+        }
+    
+    @Override
+     public void creacionYguardadoMotocicletaHora(String... str)
+     {
+        String Mplaca = str[1];
+      String Mservicio =  str[2];
+      String tipo = str[3];
+      int cilindraje = Integer.parseInt(str[4]);
+      
+      LocalDateTime Mentrada = LocalDateTime.now();
+      LocalDateTime Msalida = null;
+      double tarifa = tarifaHoraMotocicleta;
+      boolean descuento = false;
+      
+      Motocicleta nuevo_vehiculo = new Motocicleta(Mplaca,Mservicio,tarifa,descuento,
+              Mentrada,Msalida,cilindraje,tipo);
+      vehiculos.add(nuevo_vehiculo);
+      GuardarVehiculos(vehiculos);
+     }
+    
     
     // metodo para crear y guardar la motocicleta
     @Override
@@ -107,18 +156,18 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
     {
       String Mplaca = str[1];
       String Mservicio =  str[2];
-      String tipo = str[3];
-      int cilindraje = Integer.parseInt(str[4]);
+      String tipo = str[4];
+      int cilindraje = Integer.parseInt(str[3]);
       
       LocalDateTime Mentrada = LocalDateTime.now();
       LocalDateTime Msalida = null;
-      double tarifa = 3000.0;
+      double tarifa = tarifaDiaMotocicleta;
       boolean descuento = false;
       
       Motocicleta nuevo_vehiculo = new Motocicleta(Mplaca,Mservicio,tarifa,descuento,
               Mentrada,Msalida,cilindraje,tipo);
       vehiculos.add(nuevo_vehiculo);
-      System.out.println("Guardado!");
+      GuardarVehiculos(vehiculos);
     } 
     
     
@@ -134,12 +183,37 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
       
       LocalDateTime Centrada = LocalDateTime.now();
       LocalDateTime Csalida = null;
-      double Ctarifa = 6000.0;
       boolean Cdescuento = false;
-      
+      double Ctarifa = tarifaDiaCamion;
       Camion nuevo_vehiculo = new Camion(Cplaca,Cservicio,Ctarifa,Cdescuento,
               Centrada,Csalida,capacidad,ejes);
       vehiculos.add(nuevo_vehiculo);
-      System.out.println("Guardado!");
+      GuardarVehiculos(vehiculos);
+    }
+    
+    @Override
+    public void creacionYguardadoCamionHora(String... str)
+    {
+        String Cplaca = str[1];
+      String Cservicio = str[2];
+      int ejes = Integer.parseInt(str[4]);
+      double capacidad = Double.parseDouble(str[3]);
+      
+      
+      LocalDateTime Centrada = LocalDateTime.now();
+      LocalDateTime Csalida = null;
+      boolean Cdescuento = false;
+      double Ctarifa = tarifaHoraCamion;
+      Camion nuevo_vehiculo = new Camion(Cplaca,Cservicio,Ctarifa,Cdescuento,
+              Centrada,Csalida,capacidad,ejes);
+      vehiculos.add(nuevo_vehiculo);
+      GuardarVehiculos(vehiculos);
+    }
+    
+    @Override
+    public void GuardarVehiculos(List<Vehiculo> vehiculo)
+    {
+        Data d = new Data();
+        d.GuardarVehiculo(vehiculo);
     }
 }

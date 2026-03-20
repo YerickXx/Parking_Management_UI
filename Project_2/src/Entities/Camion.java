@@ -41,5 +41,9 @@ public class Camion extends Vehiculo {
         this.Numero_Ejes = Numero_Ejes;
     }
     
-
+    @Override
+    public String toString() 
+    {
+    return "Camion, " + this.getPlaca() +", "+ this.getServicio() + ", " + Capacidad_Carga + ", " + Numero_Ejes + ", " +  ", " + this.getTarifa_base();
+    }
 }

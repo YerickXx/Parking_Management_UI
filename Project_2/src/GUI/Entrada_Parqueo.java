@@ -29,6 +29,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jRadioButton2.setVisible(false);
         jRadioButton3.setVisible(false);
         LabelCamion.setVisible(false);
+        SeleccionMoto.setVisible(false);
         setLocationRelativeTo(null);
     }
 
@@ -49,7 +50,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         String Mplaca = Input_PlacaRegistro.getText();
         String Mservicio = Input_Servicio.getSelectedItem().toString();
         String cilindraje = Input_Caracteristica1.getText();
-        L.creacionVehiculos(Mvehiculo, Mplaca, Mservicio, cilindraje);
+        String tipo = SeleccionMoto.getSelectedItem().toString();
+        L.creacionVehiculos(Mvehiculo, Mplaca, Mservicio, cilindraje, tipo);
     }
 
     public void getElementosCamion() // funcion para tomar los valores del camion
@@ -93,6 +95,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         Input_Caracteristica2 = new javax.swing.JTextField();
         Label_marca = new javax.swing.JLabel();
         Label_modelo = new javax.swing.JLabel();
+        SeleccionMoto = new javax.swing.JComboBox<>();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -206,7 +209,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Seleccion_Gas);
-        Seleccion_Gas.setBounds(280, 260, 90, 26);
+        Seleccion_Gas.setBounds(240, 270, 90, 26);
         jPanel1.add(Input_Caracteristica1);
         Input_Caracteristica1.setBounds(200, 330, 150, 26);
 
@@ -229,6 +232,10 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         Label_modelo.setOpaque(true);
         jPanel1.add(Label_modelo);
         Label_modelo.setBounds(180, 360, 210, 15);
+
+        SeleccionMoto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de Moto", "Deportiva", "Naked", "Trail", "Scooter", "Clasica", "Cruiser", "Enduro", "Touring", "Electrica", "Aventura" }));
+        jPanel1.add(SeleccionMoto);
+        SeleccionMoto.setBounds(230, 130, 120, 26);
 
         jRadioButton1.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -368,6 +375,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton1.setVisible(false);
                 jRadioButton2.setVisible(false);
                 jRadioButton3.setVisible(false);
+                SeleccionMoto.setVisible(false);
                 break;
             }
             case "Motocicleta" -> {
@@ -380,6 +388,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton1.setVisible(false);
                 jRadioButton2.setVisible(false);
                 jRadioButton3.setVisible(false);
+                SeleccionMoto.setVisible(true);
                 break;
             }
             case "Camion" -> {
@@ -393,6 +402,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton2.setVisible(true);
                 jRadioButton3.setVisible(true);
                 LabelCamion.setVisible(true);
+                SeleccionMoto.setVisible(false);
                 break;
             }
             case "Seleccione" -> {
@@ -404,6 +414,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 jRadioButton1.setVisible(false);
                 jRadioButton2.setVisible(false);
                 jRadioButton3.setVisible(false);
+                SeleccionMoto.setVisible(false);
                 break;
             }
         }
@@ -419,7 +430,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }//GEN-LAST:event_Input_Caracteristica2ActionPerformed
 
     private void Seleccion_GasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Seleccion_GasActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_Seleccion_GasActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -479,6 +490,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCamion;
     private javax.swing.JLabel Label_marca;
     private javax.swing.JLabel Label_modelo;
+    private javax.swing.JComboBox<String> SeleccionMoto;
     private javax.swing.JComboBox<String> Seleccion_Gas;
     private javax.swing.JComboBox<String> Seleccion_Vehiculo;
     private javax.swing.JLabel imagenEntrada;

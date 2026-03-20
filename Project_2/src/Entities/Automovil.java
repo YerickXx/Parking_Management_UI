@@ -53,5 +53,8 @@ public class Automovil extends Vehiculo {
         this.Marca = Marca;
     }
     
-    
+    @Override
+    public String toString() {
+    return "Automovil," + this.getPlaca() +", "+ this.getServicio() + "," + Marca + "," + Modelo + "," + Tipo_Combustible + "," + this.getTarifa_base();
+}
 }

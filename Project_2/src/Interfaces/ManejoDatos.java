@@ -1,9 +1,11 @@
 
 package Interfaces;
+import java.util.List;
+import Entities.Vehiculo;
 
 public interface ManejoDatos {
-    public void CrearArchivo();
-    public boolean GuardarVehiculo();
+    public boolean CrearArchivo();
+    public boolean GuardarVehiculo(List<Vehiculo> vehiculo);
     public boolean LeerVehiculo();
     public boolean BorrarVehiculo();
 }

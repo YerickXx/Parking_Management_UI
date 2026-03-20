@@ -42,4 +42,10 @@ public class Motocicleta extends Vehiculo {
         this.Tipo_Moto = Tipo_Moto;
     }
     
+        @Override
+    public String toString() 
+    {
+    return "Motocicleta, " + this.getPlaca() +", "+ this.getServicio() + ", " + Cilindraje + ", " + Tipo_Moto + ", " +  ", " + this.getTarifa_base();
+    }
+    
 }
