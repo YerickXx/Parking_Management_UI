@@ -216,4 +216,10 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
         Data d = new Data();
         d.GuardarVehiculo(vehiculo);
     }
+    
+    public void MostrarVehiculos() // llamado de la lectura de vehiculos
+    {
+         Data d = new Data();
+         d.LeerVehiculo();
+    }
 }

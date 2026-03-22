@@ -3,7 +3,8 @@ package Data;
 import java.io.*;
 import Entities.Vehiculo;
 import java.util.List;
-
+import java.io.FileNotFoundException; // para el manejo de errores (tomado de W3 schools)
+import java.util.Scanner;             // El Scanner para leer los archivos
 
 public class Data implements Interfaces.ManejoDatos {
 
@@ -51,14 +52,27 @@ public class Data implements Interfaces.ManejoDatos {
     }
 
     // Lectura de los archivos .dat
-    private boolean Lectura() {
+    private boolean Lectura() 
+    {
+        File leer = new File("Vehiculos.txt");
+        try(Scanner lector = new Scanner(leer))// nuevo try-with-resources (cierra de forma automatica los archivos)
+        {
+            while(lector.hasNextLine())
+            {
+                String dat = lector.nextLine(); // lectura linea a linea
+                return true;
+            }
+        } catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean LeerVehiculo() {
         Lectura();
-        return false;
+        return true;
     }
 
     // Borrado de contenido 
