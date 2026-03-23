@@ -44,6 +44,6 @@ public class Camion extends Vehiculo {
     @Override
     public String toString() 
     {
-    return "Camion, " + this.getPlaca() +", "+ this.getServicio() + ", " + Capacidad_Carga + ", " + Numero_Ejes + ", " +  ", " + this.getTarifa_base();
+    return "Camion, " +"Placa: "+ this.getPlaca() +", Servicio: "+ this.getServicio() + ", Capacidad de carga: " + Capacidad_Carga + ", Cantidad de ejes " + Numero_Ejes +  ", Tarifa: " + this.getTarifa_base();
     }
 }

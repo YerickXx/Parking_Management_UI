@@ -9,7 +9,10 @@ import java.util.List;
 import Data.Data;
 
 public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
+    Data d = new Data();
      public List<Vehiculo> vehiculos = new ArrayList<>();
+     
+     // variables con valores para no tenerlas harcodeadas
      double tarifaDiaAutomovil = 6000.0;
      double tarifaDiaCamion = 6000.0;
      double tarifaDiaMotocicleta = 3000.0;
@@ -59,11 +62,11 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
     @Override
     public void creacionVehiculos(String... str)
     {   
-        if(str.length == 0)
+        if(str.length == 0) // validacion de input vacio
           {
             return;
           }
-        String type = str[0];
+        String type = str[0]; // tomar el valor de la poscicion 0 del 
        switch(type)
        {
            case "Automovil" -> 
@@ -213,13 +216,21 @@ public class Logic implements Interfaces.Validaciones,Interfaces.manejoObjetos{
     @Override
     public void GuardarVehiculos(List<Vehiculo> vehiculo)
     {
-        Data d = new Data();
         d.GuardarVehiculo(vehiculo);
     }
     
-    public void MostrarVehiculos() // llamado de la lectura de vehiculos
+    public String MostrarVehiculos() 
     {
-         Data d = new Data();
-         d.LeerVehiculo();
+        String contenido = "";
+        d.LeerVehiculo();
+         if(!d.leidos.isEmpty())
+        {
+            for(var s : d.leidos)
+            {
+               contenido += s.toString() + "\n"; 
+            }        
+            return contenido;
+        }return "";
     }
+    
 }

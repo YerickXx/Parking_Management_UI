@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
+import Logic.Logic;
 /**
  *
  * @author yeric
  */
 public class mainMenu extends javax.swing.JFrame {
-
+Logic L = new Logic();
     /**
      * Creates new form mainMenu
      */
@@ -32,6 +32,7 @@ public class mainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Boton_Salida = new javax.swing.JButton();
         Boton_Reportes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +69,16 @@ public class mainMenu extends javax.swing.JFrame {
         Boton_Reportes.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Reportes.setText("Reporte");
         jPanel1.add(Boton_Reportes);
-        Boton_Reportes.setBounds(150, 150, 79, 27);
+        Boton_Reportes.setBounds(150, 200, 79, 27);
+
+        jButton1.setText("Ver Vehiculos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(140, 160, 110, 27);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -95,12 +105,18 @@ public class mainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_Boton_RegistroActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        GUI.Mostrar_Vehiculos.MostrarVehiculos();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Registro;
     private javax.swing.JButton Boton_Reportes;
     private javax.swing.JButton Boton_Salida;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

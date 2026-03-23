@@ -5,8 +5,10 @@ import Entities.Vehiculo;
 import java.util.List;
 import java.io.FileNotFoundException; // para el manejo de errores (tomado de W3 schools)
 import java.util.Scanner;             // El Scanner para leer los archivos
+import java.util.ArrayList;
 
 public class Data implements Interfaces.ManejoDatos {
+    public ArrayList leidos = new ArrayList(); // lista para cargar los datos leidos
 
     // Creacion de archivo .dat
     private boolean NuevoArchivo() {
@@ -52,21 +54,23 @@ public class Data implements Interfaces.ManejoDatos {
     }
 
     // Lectura de los archivos .dat
-    private boolean Lectura() 
+    private void Lectura() 
     {
+        leidos.clear();
         File leer = new File("Vehiculos.txt");
         try(Scanner lector = new Scanner(leer))// nuevo try-with-resources (cierra de forma automatica los archivos)
         {
             while(lector.hasNextLine())
             {
                 String dat = lector.nextLine(); // lectura linea a linea
-                return true;
+                leidos.add(dat);
+               
             }
         } catch(FileNotFoundException e)
         {
             e.printStackTrace();
         }
-        return false;
+       
     }
 
     @Override

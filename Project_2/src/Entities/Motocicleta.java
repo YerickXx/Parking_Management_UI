@@ -45,7 +45,8 @@ public class Motocicleta extends Vehiculo {
         @Override
     public String toString() 
     {
-    return "Motocicleta, " + this.getPlaca() +", "+ this.getServicio() + ", " + Cilindraje + ", " + Tipo_Moto + ", " +  ", " + this.getTarifa_base();
+    return "Motocicleta, " + "Placa: "+this.getPlaca() +", Servicio: "+ this.getServicio() +
+            ", Cilindraje: " + Cilindraje + ", Tipo Moto: " + Tipo_Moto+  ", Tarifa: " + this.getTarifa_base();
     }
     
 }
