@@ -102,6 +102,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         LabelCamion = new javax.swing.JLabel();
         imagenEntrada = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
+        jOptionPane2 = new javax.swing.JOptionPane();
 
         Grupo_Ejes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -290,6 +291,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jOptionPane1.setMessage("La palaca del vahiculo debe contener 3 letras y 3 numeros (abc123)!");
         jPanel1.add(jOptionPane1);
         jOptionPane1.setBounds(100, 380, 230, 70);
+        jPanel1.add(jOptionPane2);
+        jOptionPane2.setBounds(160, 180, 262, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -325,6 +328,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
+            if(!L.placaUnica(Input_PlacaRegistro.getText())){
+
             if (L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) {
                 String ops = Seleccion_Vehiculo.getSelectedItem().toString();
 
@@ -350,7 +355,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 }
             } else {
                 jOptionPane1.showMessageDialog(this, "Debe ingresar una placa valida! (abc123)");
-            }
+            }}else{jOptionPane2.showMessageDialog(this, "Esta placa ya esta registrada!");}
         } else {
             jOptionPane1.showMessageDialog(this, "El ingreso de placa es de caracter obligatorio!");
         }
@@ -500,6 +505,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JOptionPane jOptionPane1;
+    private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
