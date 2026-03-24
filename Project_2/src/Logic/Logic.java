@@ -233,5 +233,25 @@ public class Logic implements Interfaces.Validaciones, Interfaces.manejoObjetos 
         }
         return false;
     }
+    
+    public boolean ValidarCarga(String... str)
+    {
+        int ejes = Integer.parseInt(str[1]);
+        double capacidad = Double.parseDouble(str[0]);
+        
+        if(ejes <= 2 && capacidad > 18)
+        {
+            return false;
+        }
+        if(ejes == 3 && capacidad > 25)
+        {
+            return false;
+        }
+        if(ejes == 4 && capacidad > 36)
+        {
+            return false;
+        }
+        return true;
+    }
 
 }

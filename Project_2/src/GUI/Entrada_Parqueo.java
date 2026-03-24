@@ -54,17 +54,21 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     public void getElementosCamion() // funcion para tomar los valores del camion
     {
+            int value = ((Integer) Spinner_Ejes.getValue());
+            String ejes = String.valueOf(value);
         boolean d = L.ValidacionDouble(Input_Caracteristica1.getText());
         if (!d) {
             jOptionPane1.showMessageDialog(this, "Debe digitar una capacidad de cargar valida (ej: 23.1)");
         } else {
+            if(L.ValidarCarga(Input_Caracteristica1.getText(),ejes))
+            {
             String Cvehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
             String Cplaca = Input_PlacaRegistro.getText();
             String Cservicio = Input_Servicio.getSelectedItem().toString();
             String carga = Input_Caracteristica1.getText();
-            int value = ((Integer) Spinner_Ejes.getValue());
-            String ejes = String.valueOf(value);
             L.creacionVehiculos(Cvehiculo, Cplaca, Cservicio, carga, ejes);
+            }
+            else{jOptionPane1.showMessageDialog(this,"La carga debe ser acorde a los ejes y segun lo impone la ley!");}
         }
     }
 
