@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-import Logic.Logic;
+import Logic.Logic_Objetos;
 /**
  *
  * @author yeric
  */
 public class Mostrar_Vehiculos extends javax.swing.JFrame {
-    Logic L = new Logic();
+    Logic_Objetos L = new Logic_Objetos();
     /**
      * Creates new form Mostrar_Vehiculos
      */

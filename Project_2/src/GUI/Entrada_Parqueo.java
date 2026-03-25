@@ -4,16 +4,16 @@
  */
 package GUI;
 
-import Logic.Logic;
-import Entities.Automovil;
-
+import Logic.Logic_Objetos;
+import Logic.Logic_Validaciones;
 /**
  *
  * @author yeric
  */
 public class Entrada_Parqueo extends javax.swing.JFrame {
 
-    Logic L = new Logic();
+    Logic_Objetos L = new Logic_Objetos();
+    Logic_Validaciones V = new Logic_Validaciones();
 
     /**
      * Creates new form Entrada_Parqueo
@@ -56,11 +56,11 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     {
             int value = ((Integer) Spinner_Ejes.getValue());
             String ejes = String.valueOf(value);
-        boolean d = L.ValidacionDouble(Input_Caracteristica1.getText());
+        boolean d = V.ValidacionDouble(Input_Caracteristica1.getText());
         if (!d) {
             jOptionPane1.showMessageDialog(this, "Debe digitar una capacidad de cargar valida (ej: 23.1)");
         } else {
-            if(L.ValidarCarga(Input_Caracteristica1.getText(),ejes))
+            if(V.ValidarCarga(Input_Caracteristica1.getText(),ejes))
             {
             String Cvehiculo = Seleccion_Vehiculo.getSelectedItem().toString();
             String Cplaca = Input_PlacaRegistro.getText();
@@ -293,9 +293,9 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
-            if(!L.placaUnica(Input_PlacaRegistro.getText())){
+            if(!V.placaUnica(Input_PlacaRegistro.getText())){
 
-            if (L.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) {
+            if (V.ValidacionInputAlphaNum(Input_PlacaRegistro.getText())) {
                 String ops = Seleccion_Vehiculo.getSelectedItem().toString();
 
                 switch (ops) {
