@@ -6,6 +6,7 @@ package GUI;
 
 import Logic.Logic_Objetos;
 import Logic.Logic_Validaciones;
+import Logic.Logic;
 /**
  *
  * @author yeric
@@ -14,6 +15,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     Logic_Objetos L = new Logic_Objetos();
     Logic_Validaciones V = new Logic_Validaciones();
+    Logic d = new Logic();
 
     /**
      * Creates new form Entrada_Parqueo
@@ -291,6 +293,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Boton para registrar el vehiculo y regresar al menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if(d.EspaciosEnParqueo()){
         if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
             if(!V.placaUnica(Input_PlacaRegistro.getText())){
@@ -323,7 +326,11 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
             }}else{jOptionPane2.showMessageDialog(this, "Esta placa ya esta registrada!");}
         } else {
             jOptionPane1.showMessageDialog(this, "El ingreso de placa es de caracter obligatorio!");
-        }
+        }}else{
+           jOptionPane1.showMessageDialog(this,"El parqueo se encuentra en su capacidad maxima!");
+           this.dispose();
+           new GUI.mainMenu().setVisible(true);
+       }
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
