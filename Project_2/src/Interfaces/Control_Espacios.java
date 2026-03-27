@@ -7,4 +7,5 @@ package Interfaces;
  */
 public interface Control_Espacios {
     boolean EspaciosEnParqueo();
+    boolean cincoEspacios();
 }

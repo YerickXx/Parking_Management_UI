@@ -293,7 +293,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Boton para registrar el vehiculo y regresar al menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(d.EspaciosEnParqueo()){
+       if(d.cincoEspacios()){jOptionPane1.showMessageDialog(this,"Atencion!: Quedan 5 espacios en el parqueo");}
+        if(d.EspaciosEnParqueo()){
         if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {
             if(!V.placaUnica(Input_PlacaRegistro.getText())){
@@ -402,9 +403,6 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Seleccion_GasActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void Registro() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

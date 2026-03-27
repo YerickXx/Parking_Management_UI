@@ -34,6 +34,7 @@ Logic L = new Logic();
         Boton_Reportes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +85,8 @@ Logic L = new Logic();
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 400, 300);
+        jPanel1.add(jOptionPane1);
+        jOptionPane1.setBounds(70, 190, 262, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +106,7 @@ Logic L = new Logic();
         // TODO add your handling code here:
         GUI.Entrada_Parqueo.Registro();
         this.dispose();
+
     }//GEN-LAST:event_Boton_RegistroActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -119,6 +123,7 @@ Logic L = new Logic();
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

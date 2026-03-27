@@ -16,4 +16,15 @@ public class Logic implements Interfaces.Control_Espacios{
         return false;
     }
     
+    @Override
+    public boolean cincoEspacios()
+    {
+        final int ESPACIOS_RESTANTES = 5;
+        d.LeerVehiculo();
+        if(d.leidos.size() == ESPACIOS_RESTANTES)
+        {
+            return true;
+        }
+        return false;
+    }
 }
