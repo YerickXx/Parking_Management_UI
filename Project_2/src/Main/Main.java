@@ -22,6 +22,7 @@ public static void llamadoCrearArchivo()
          
          llamadoCrearArchivo();
     }
+    public static void menu(){}
     
  
 }

@@ -15,6 +15,8 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
      */
     public Salida_Vehiculos() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setSize(420, 380); 
     }
 
     /**
@@ -26,21 +28,87 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        Label_placa = new javax.swing.JLabel();
+        Inpu_placa = new javax.swing.JTextField();
+        Buscar_Vehiculo = new javax.swing.JButton();
+        Salida_Vehiculo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(300, 400));
+        setResizable(false);
+        setSize(new java.awt.Dimension(400, 300));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(420, 380));
+        jPanel1.setLayout(null);
+
+        Label_placa.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Label_placa.setText("Ingrese la placa de su vehiculo:");
+        jPanel1.add(Label_placa);
+        Label_placa.setBounds(0, 20, 220, 20);
+
+        Inpu_placa.setEditable(false);
+        Inpu_placa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inpu_placaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Inpu_placa);
+        Inpu_placa.setBounds(220, 20, 160, 26);
+
+        Buscar_Vehiculo.setText("Buscar");
+        jPanel1.add(Buscar_Vehiculo);
+        Buscar_Vehiculo.setBounds(260, 50, 76, 27);
+
+        Salida_Vehiculo.setText("Registrar Salida");
+        jPanel1.add(Salida_Vehiculo);
+        Salida_Vehiculo.setBounds(280, 310, 120, 27);
+
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(0, 310, 90, 27);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setPreferredSize(new java.awt.Dimension(420, 380));
+        jLabel1.setMaximumSize(new java.awt.Dimension(400, 300));
+
+        jPanel1.setLayout(null);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, -1, 420, 350);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Inpu_placaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpu_placaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inpu_placaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +146,12 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar_Vehiculo;
+    private javax.swing.JTextField Inpu_placa;
+    private javax.swing.JLabel Label_placa;
+    private javax.swing.JButton Salida_Vehiculo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
