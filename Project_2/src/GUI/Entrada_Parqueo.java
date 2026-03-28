@@ -293,7 +293,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     // Boton para registrar el vehiculo y regresar al menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(d.cincoEspacios()){jOptionPane1.showMessageDialog(this,"Atencion!: Quedan 5 espacios en el parqueo");}
+       if(d.cincoEspacios()){jOptionPane1.showMessageDialog(this,"Atencion!: Quedan 5 espacios en el parqueo"); }
         if(d.EspaciosEnParqueo()){
         if (!Input_PlacaRegistro.getText().isEmpty()) // validacion de espacio vacio.
         {

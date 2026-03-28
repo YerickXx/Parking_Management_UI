@@ -62,6 +62,11 @@ Logic L = new Logic();
         Boton_Salida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Boton_Salida.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Salida.setText("Salida De Vehiculo");
+        Boton_Salida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_SalidaActionPerformed(evt);
+            }
+        });
         jPanel1.add(Boton_Salida);
         Boton_Salida.setBounds(120, 110, 150, 27);
 
@@ -113,6 +118,12 @@ Logic L = new Logic();
         GUI.Mostrar_Vehiculos.MostrarVehiculos();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Boton_SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_SalidaActionPerformed
+        
+        GUI.Salida_Vehiculos.Salida();
+        this.dispose();
+    }//GEN-LAST:event_Boton_SalidaActionPerformed
 
 
 
