@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package GUI;
+import Logic.Logic_Validaciones;
 
-/**
- *
- * @author yeric
- */
 public class Salida_Vehiculos extends javax.swing.JFrame {
-
+    Logic_Validaciones v = new Logic_Validaciones();
     /**
      * Creates new form Salida_Vehiculos
      */
@@ -30,14 +24,13 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Label_placa = new javax.swing.JLabel();
-        Inpu_placa = new javax.swing.JTextField();
+        Input_placa = new javax.swing.JTextField();
         Buscar_Vehiculo = new javax.swing.JButton();
         Salida_Vehiculo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(300, 400));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
 
@@ -49,16 +42,21 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jPanel1.add(Label_placa);
         Label_placa.setBounds(0, 20, 220, 20);
 
-        Inpu_placa.setEditable(false);
-        Inpu_placa.addActionListener(new java.awt.event.ActionListener() {
+        Input_placa.setEditable(false);
+        Input_placa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Inpu_placaActionPerformed(evt);
+                Input_placaActionPerformed(evt);
             }
         });
-        jPanel1.add(Inpu_placa);
-        Inpu_placa.setBounds(220, 20, 160, 26);
+        jPanel1.add(Input_placa);
+        Input_placa.setBounds(220, 20, 160, 26);
 
         Buscar_Vehiculo.setText("Buscar");
+        Buscar_Vehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar_VehiculoActionPerformed(evt);
+            }
+        });
         jPanel1.add(Buscar_Vehiculo);
         Buscar_Vehiculo.setBounds(260, 50, 76, 27);
 
@@ -100,15 +98,22 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Inpu_placaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inpu_placaActionPerformed
+    private void Input_placaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_placaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Inpu_placaActionPerformed
+    }//GEN-LAST:event_Input_placaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Buscar_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_VehiculoActionPerformed
+        if(v.ValidacionInputAlphaNum(Input_placa.getText()))
+        {
+            
+        }
+    }//GEN-LAST:event_Buscar_VehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,7 +152,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Vehiculo;
-    private javax.swing.JTextField Inpu_placa;
+    private javax.swing.JTextField Input_placa;
     private javax.swing.JLabel Label_placa;
     private javax.swing.JButton Salida_Vehiculo;
     private javax.swing.JButton jButton1;

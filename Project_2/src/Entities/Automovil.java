@@ -57,6 +57,7 @@ public class Automovil extends Vehiculo {
     public String toString() {
     return "Automovil, " +" Placa: " +this.getPlaca() +", Servicio: "+ this.getServicio() + 
             ", Marca: " + Marca + ", Modelo: " + Modelo + ", Combustible: " + 
-            Tipo_Combustible + ", Tarifa: " + this.getTarifa_base();
+            Tipo_Combustible + "Hora ingreso: "+ this.getHoraEntrada() +", Hora salida: "+this.getHoraSalida()+
+            ", Tarifa: " + this.getTarifa_base();
 }
 }

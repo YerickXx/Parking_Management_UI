@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import Data.Data;
+import java.time.Month;
 
 /**
  *
@@ -76,7 +77,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         String modelo = str[4];
         String combustible = str[5];
 
-        LocalDateTime Aentrada = LocalDateTime.now();
+        LocalDateTime Aentrada = LocalDateTime.now().withNano(0).withSecond(0); // eliminar milisegundos y segundos
         LocalDateTime Asalida = null;
         double tarifa = tarifaDiaAutomovil;
         boolean descuentoA = false;
