@@ -8,7 +8,7 @@ import java.util.Scanner;             // El Scanner para leer los archivos
 import java.util.ArrayList;
 
 public class Data implements Interfaces.ManejoDatos {
-    public ArrayList leidos = new ArrayList(); // lista para cargar los datos leidos
+    public ArrayList<String> leidos = new ArrayList<>(); // lista para cargar los datos leidos
 
     // Creacion de archivo .dat
     private boolean NuevoArchivo() {

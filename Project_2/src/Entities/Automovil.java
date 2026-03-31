@@ -55,9 +55,9 @@ public class Automovil extends Vehiculo {
     
     @Override
     public String toString() {
-    return "Automovil, " +" Placa: " +this.getPlaca() +", Servicio: "+ this.getServicio() + 
-            ", Marca: " + Marca + ", Modelo: " + Modelo + ", Combustible: " + 
-            Tipo_Combustible + "Hora ingreso: "+ this.getHoraEntrada() +", Hora salida: "+this.getHoraSalida()+
-            ", Tarifa: " + this.getTarifa_base();
+    return "Automovil" +"," +this.getPlaca() +","+ this.getServicio() + 
+            "," + Marca + "," + Modelo + "," + 
+            Tipo_Combustible + ","+ this.getHoraEntrada() +","+this.getHoraSalida()+
+            "," + this.getTarifa_base();
 }
 }

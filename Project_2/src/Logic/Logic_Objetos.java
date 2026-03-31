@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import Data.Data;
-import java.time.Month;
 
 /**
  *
@@ -23,8 +22,8 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         public List<Vehiculo> vehiculos = new ArrayList<>();
     
     // variables con valores para no tenerlas harcodeadas
-    double tarifaDiaAutomovil = 6000.0;
-    double tarifaDiaCamion = 6000.0;
+    double  tarifaDiaAutomovil = 5000.0;
+    double  tarifaDiaCamion = 5000.0;
     double tarifaDiaMotocicleta = 3000.0;
     double tarifaHoraAuto = 600.0;
     double tarifaHoraCamion = 600.0;
@@ -96,7 +95,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         String modelo = str[4];
         String combustible = str[5];
 
-        LocalDateTime Aentrada = LocalDateTime.now();
+        LocalDateTime Aentrada = LocalDateTime.now().withNano(0).withSecond(0);
         LocalDateTime Asalida = null;
         double tarifa = tarifaHoraAuto;
         boolean descuentoA = false;
@@ -114,7 +113,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         String tipo = str[4];
         int cilindraje = Integer.parseInt(str[3]);
 
-        LocalDateTime Mentrada = LocalDateTime.now();
+        LocalDateTime Mentrada = LocalDateTime.now().withNano(0).withSecond(0);
         LocalDateTime Msalida = null;
         double tarifa = tarifaHoraMotocicleta;
         boolean descuento = false;
@@ -133,7 +132,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         String tipo = str[4];
         int cilindraje = Integer.parseInt(str[3]);
 
-        LocalDateTime Mentrada = LocalDateTime.now();
+        LocalDateTime Mentrada = LocalDateTime.now().withNano(0).withSecond(0);
         LocalDateTime Msalida = null;
         double tarifa = tarifaDiaMotocicleta;
         boolean descuento = false;
@@ -152,7 +151,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         int ejes = Integer.parseInt(str[4]);
         double capacidad = Double.parseDouble(str[3]);
 
-        LocalDateTime Centrada = LocalDateTime.now();
+        LocalDateTime Centrada = LocalDateTime.now().withNano(0).withSecond(0);
         LocalDateTime Csalida = null;
         boolean Cdescuento = false;
         double Ctarifa = tarifaDiaCamion;
@@ -169,7 +168,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         int ejes = Integer.parseInt(str[4]);
         double capacidad = Double.parseDouble(str[3]);
 
-        LocalDateTime Centrada = LocalDateTime.now();
+        LocalDateTime Centrada = LocalDateTime.now().withNano(0).withSecond(0);
         LocalDateTime Csalida = null;
         boolean Cdescuento = false;
         double Ctarifa = tarifaHoraCamion;

@@ -1,9 +1,11 @@
 
 package GUI;
 import Logic.Logic_Validaciones;
+import Logic.Logic_Salida;
 
 public class Salida_Vehiculos extends javax.swing.JFrame {
     Logic_Validaciones v = new Logic_Validaciones();
+    Logic_Salida s = new Logic_Salida();
     /**
      * Creates new form Salida_Vehiculos
      */
@@ -29,6 +31,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         Salida_Vehiculo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -42,7 +45,6 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jPanel1.add(Label_placa);
         Label_placa.setBounds(0, 20, 220, 20);
 
-        Input_placa.setEditable(false);
         Input_placa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Input_placaActionPerformed(evt);
@@ -62,7 +64,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
 
         Salida_Vehiculo.setText("Registrar Salida");
         jPanel1.add(Salida_Vehiculo);
-        Salida_Vehiculo.setBounds(280, 310, 120, 27);
+        Salida_Vehiculo.setBounds(270, 310, 120, 27);
 
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +83,8 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jPanel1.setLayout(null);
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, -1, 420, 350);
+        jPanel1.add(jOptionPane1);
+        jOptionPane1.setBounds(80, 160, 262, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +115,9 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     private void Buscar_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_VehiculoActionPerformed
         if(v.ValidacionInputAlphaNum(Input_placa.getText()))
         {
-            
+            s.Existencia_Actualizacion(Input_placa.getText());
+            String mensaje = s.factura();
+            jOptionPane1.showMessageDialog(this,mensaje);
         }
     }//GEN-LAST:event_Buscar_VehiculoActionPerformed
 
@@ -157,6 +163,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton Salida_Vehiculo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
