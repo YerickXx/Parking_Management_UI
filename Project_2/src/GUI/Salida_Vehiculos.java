@@ -63,6 +63,11 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         Buscar_Vehiculo.setBounds(260, 50, 76, 27);
 
         Salida_Vehiculo.setText("Registrar Salida");
+        Salida_Vehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salida_VehiculoActionPerformed(evt);
+            }
+        });
         jPanel1.add(Salida_Vehiculo);
         Salida_Vehiculo.setBounds(270, 310, 120, 27);
 
@@ -115,11 +120,15 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     private void Buscar_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_VehiculoActionPerformed
         if(v.ValidacionInputAlphaNum(Input_placa.getText()))
         {
-            s.Existencia_Actualizacion(Input_placa.getText());
-            String mensaje = s.factura();
-            jOptionPane1.showMessageDialog(this,mensaje);
+            if(s.Existencia_Actualizacion(Input_placa.getText())){
+            jOptionPane1.showMessageDialog(this,"Vehiculo encontrado!");
+            }else{jOptionPane1.showMessageDialog(this,"Vehiculo no encontrado!");}
         }
     }//GEN-LAST:event_Buscar_VehiculoActionPerformed
+
+    private void Salida_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salida_VehiculoActionPerformed
+        s.BorrarVehiculo(Input_placa.getText());
+    }//GEN-LAST:event_Salida_VehiculoActionPerformed
 
     /**
      * @param args the command line arguments

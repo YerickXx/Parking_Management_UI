@@ -46,10 +46,22 @@ public class Data implements Interfaces.ManejoDatos {
             return false;
         }
     }
-
+    
+    public void actualizarArchivo(ArrayList<String> lineasActualizadas) {
+    // En false para no agregar al final
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("Vehiculos.txt", false))) {
+        for (String linea : lineasActualizadas) {
+            bw.write(linea);
+            bw.newLine();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     @Override
     public boolean GuardarVehiculo(List<Vehiculo> vehiculo) 
     {
+        
         return Escritura(vehiculo);
     }
 
