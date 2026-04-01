@@ -12,7 +12,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     public Salida_Vehiculos() {
         initComponents();
         setLocationRelativeTo(null);
-        this.setSize(420, 380); 
+        this.setSize(420, 380);
     }
 
     /**
@@ -30,6 +30,18 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         Buscar_Vehiculo = new javax.swing.JButton();
         Salida_Vehiculo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Label_MostrarPlaca = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Label_MostrarServicio = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Label_HoraEntrada = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Label_HoraSalida = new javax.swing.JLabel();
+        Mostrar_TiempoEnParqueo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Mostrar_PagoTotal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
 
@@ -80,6 +92,42 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(0, 310, 90, 27);
 
+        jLabel2.setText("Placa:");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 90, 50, 16);
+        jPanel1.add(Label_MostrarPlaca);
+        Label_MostrarPlaca.setBounds(60, 90, 80, 20);
+
+        jLabel3.setText("Servicio:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 140, 50, 16);
+        jPanel1.add(Label_MostrarServicio);
+        Label_MostrarServicio.setBounds(60, 140, 70, 20);
+
+        jLabel4.setText("Hora Entrada:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(10, 180, 80, 16);
+        jPanel1.add(Label_HoraEntrada);
+        Label_HoraEntrada.setBounds(90, 180, 130, 20);
+
+        jLabel5.setText("Hora Salida:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(10, 220, 70, 16);
+        jPanel1.add(Label_HoraSalida);
+        Label_HoraSalida.setBounds(90, 220, 140, 20);
+        jPanel1.add(Mostrar_TiempoEnParqueo);
+        Mostrar_TiempoEnParqueo.setBounds(130, 270, 60, 20);
+
+        jLabel6.setText("Tiempo en parqueo:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(10, 270, 110, 16);
+
+        jLabel7.setText("Pago Total:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(220, 280, 60, 16);
+        jPanel1.add(Mostrar_PagoTotal);
+        Mostrar_PagoTotal.setBounds(290, 280, 90, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setPreferredSize(new java.awt.Dimension(420, 380));
@@ -87,7 +135,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, -1, 420, 350);
+        jLabel1.setBounds(0, -1, 410, 360);
         jPanel1.add(jOptionPane1);
         jOptionPane1.setBounds(80, 160, 262, 90);
 
@@ -118,16 +166,29 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Buscar_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_VehiculoActionPerformed
+        s.TomarDatos();
+        Label_MostrarPlaca.setText(Input_placa.getText());
+        Label_MostrarServicio.setText(s.TipoServicio);
+        Label_HoraEntrada.setText(s.entrada);
+        Label_HoraSalida.setText(s.Salida);
+        Mostrar_PagoTotal.setText(s.pagoTarifa);
+        //Mostrar_TiempoEnParqueo.setText(s.Tiempoparqueo);
         if(v.ValidacionInputAlphaNum(Input_placa.getText()))
         {
             if(s.Existencia_Actualizacion(Input_placa.getText())){
             jOptionPane1.showMessageDialog(this,"Vehiculo encontrado!");
+            if(s.AplicarDescuento())
+            {
+                jOptionPane1.showMessageDialog(this,"Felicidades has estado al menos 8 horas por lo que aplica un 10% de descuento!");
+            }
             }else{jOptionPane1.showMessageDialog(this,"Vehiculo no encontrado!");}
         }
     }//GEN-LAST:event_Buscar_VehiculoActionPerformed
 
     private void Salida_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salida_VehiculoActionPerformed
         s.BorrarVehiculo(Input_placa.getText());
+        this.dispose();
+        new GUI.mainMenu().setVisible(true);
     }//GEN-LAST:event_Salida_VehiculoActionPerformed
 
     /**
@@ -168,10 +229,22 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar_Vehiculo;
     private javax.swing.JTextField Input_placa;
+    private javax.swing.JLabel Label_HoraEntrada;
+    private javax.swing.JLabel Label_HoraSalida;
+    private javax.swing.JLabel Label_MostrarPlaca;
+    private javax.swing.JLabel Label_MostrarServicio;
     private javax.swing.JLabel Label_placa;
+    private javax.swing.JLabel Mostrar_PagoTotal;
+    private javax.swing.JLabel Mostrar_TiempoEnParqueo;
     private javax.swing.JButton Salida_Vehiculo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

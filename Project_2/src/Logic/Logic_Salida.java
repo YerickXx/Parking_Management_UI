@@ -3,14 +3,16 @@ package Logic;
 import Data.Data;
 import java.time.LocalDateTime;
 import java.time.Duration;
-import Logic.Logic_Objetos;
 
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
 
-    Logic_Objetos L = new Logic_Objetos();
     Data d = new Data();
-    boolean aplica = false;
-    int tiempo = 0;
+    
+    public  double Tiempoparqueo;
+    public String entrada = "";
+    public String Salida = "";
+    public String TipoServicio = "";
+    public String pagoTarifa = "";
 
     // Constantes, se utilizan mayusculas por regla general de constantes
     final int CANTIDAD_HORAS = 8;
@@ -18,7 +20,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
 
     private boolean verificacionSalida(String p) {
         d.LeerVehiculo();
-
+        TomarDatos();
         for (int i = 0; i < d.leidos.size(); i++) {
             String lineaActual = d.leidos.get(i).toString();
 
@@ -30,6 +32,21 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         System.out.println("Vehículo no encontrado o ya procesado.");
         return false;
     }
+    
+    @Override
+    public boolean VerificacionServicio()
+    {
+         for (int i = 0; i < d.leidos.size(); i++) {
+            String lineaActual = d.leidos.get(i).toString();
+
+            if (lineaActual.contains(",Por hora,")) {
+                this.TipoServicio = "Por hora";
+                return true;
+            }
+        }
+         this.TipoServicio = "Por Dia";
+         return false;
+    }
 
     @Override
     public boolean Existencia_Actualizacion(String p) {
@@ -39,42 +56,27 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
 
     @Override
     public boolean AplicarDescuento() {
-        return false;
+        return CalculosFactura();
+        
     }
 
     private boolean CalculosFactura() {
+        if(VerificacionServicio()){
         for (int i = 0; i < d.leidos.size(); i++) {
             String lineaActual = d.leidos.get(i).toString();
-            if (lineaActual.contains(",null,")) {
-                //Definicion de salida
-                LocalDateTime ahora = LocalDateTime.now().withNano(0).withSecond(0);
-                String fechaSalidaStr = ahora.toString();
-
-                // Extraccion de datos para calcular
-                String[] datos = lineaActual.split(",");
-
-                //tomar el tercer elemento iterando de atras hacia adelante
-                String strEntrada = datos[datos.length - 3].trim();
-                LocalDateTime horaEntrada = LocalDateTime.parse(strEntrada);
-
-                //Duracion
-                Duration duracion = Duration.between(horaEntrada, ahora);
-                long horasTotales = duracion.toHours();
-
                 // Descuento
-                String lineaActualizada = lineaActual.replace(",null,", "," + fechaSalidaStr + ",");
+                String lineaActualizada = lineaActual.replace(",null,", "," + Salida+ ",");
 
-                if (horasTotales >= CANTIDAD_HORAS) {
-                    System.out.println("Aplica descuento de 10% por " + horasTotales + " horas.");
+                if (Tiempoparqueo >= CANTIDAD_HORAS) {
+                    System.out.println("Aplica descuento de 10% por " + Tiempoparqueo + " horas.");
                 }
-
                 //Actualizacion lista
                 d.leidos.set(i, lineaActualizada);
                 System.out.println("Línea actualizada: " + lineaActualizada);
 
                 return true;
-            }
-        }
+            
+        }}
         return false;
     }
 
@@ -87,6 +89,39 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         }
         d.actualizarArchivo(d.leidos);
         return true;
+    }
+    
+    @Override
+    public boolean TomarDatos()
+    {
+        for (int i = 0; i < d.leidos.size(); i++){
+            String lineaActual = d.leidos.get(i).toString();
+            
+            if (lineaActual.contains(",null,")){
+            LocalDateTime ahora = LocalDateTime.now().withNano(0).withSecond(0);
+                this.Salida = ahora.toString();
+
+                // Extraccion de datos para calcular
+                String[] datos = lineaActual.split(",");
+
+                //tomar el tercer elemento iterando de atras hacia adelante
+                String strEntrada = datos[datos.length - 3].trim();
+                LocalDateTime horaEntrada = LocalDateTime.parse(strEntrada);
+                this.entrada = horaEntrada.toString();
+                
+                //tomar el primer elemento de atras hacia adelante
+                String pago = datos[datos.length - 1].trim();
+                this.pagoTarifa = pago;
+
+                //Duracion
+                Duration duracion = Duration.between(horaEntrada, ahora);
+                double horasTotales = duracion.toHours();
+                this.Tiempoparqueo = horasTotales;
+                return true;
+               
+            } 
+        }
+        return false;
     }
 
 }

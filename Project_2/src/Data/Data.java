@@ -47,6 +47,7 @@ public class Data implements Interfaces.ManejoDatos {
         }
     }
     
+    @Override
     public void actualizarArchivo(ArrayList<String> lineasActualizadas) {
     // En false para no agregar al final
     try (BufferedWriter bw = new BufferedWriter(new FileWriter("Vehiculos.txt", false))) {
@@ -89,17 +90,6 @@ public class Data implements Interfaces.ManejoDatos {
     public boolean LeerVehiculo() {
         Lectura();
         return true;
-    }
-
-    // Borrado de contenido 
-    private boolean Borrado() {
-        return false;
-    }
-
-    @Override
-    public boolean BorrarVehiculo() {
-        Borrado();
-        return false;
     }
 
 }
