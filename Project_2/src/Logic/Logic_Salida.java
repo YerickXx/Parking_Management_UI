@@ -5,22 +5,21 @@ import java.time.LocalDateTime;
 import java.time.Duration;
 
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
-
     Data d = new Data();
     
-    public  double Tiempoparqueo;
+    public Duration Tiempoparqueo;
     public String entrada = "";
     public String Salida = "";
     public String TipoServicio = "";
-    public String pagoTarifa = "";
-
+    public double pagoTarifa = 0.0;
+    public double precioFinal = 0.0;
+    
     // Constantes, se utilizan mayusculas por regla general de constantes
     final int CANTIDAD_HORAS = 8;
     final double DESC = 0.10;
 
     private boolean verificacionSalida(String p) {
         d.LeerVehiculo();
-        TomarDatos();
         for (int i = 0; i < d.leidos.size(); i++) {
             String lineaActual = d.leidos.get(i).toString();
 
@@ -41,10 +40,9 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
 
             if (lineaActual.contains(",Por hora,")) {
                 this.TipoServicio = "Por hora";
-                return true;
-            }
+            }else{this.TipoServicio = "Por dia";return true;}
+            
         }
-         this.TipoServicio = "Por Dia";
          return false;
     }
 
@@ -66,16 +64,19 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
             String lineaActual = d.leidos.get(i).toString();
                 // Descuento
                 String lineaActualizada = lineaActual.replace(",null,", "," + Salida+ ",");
-
-                if (Tiempoparqueo >= CANTIDAD_HORAS) {
-                    System.out.println("Aplica descuento de 10% por " + Tiempoparqueo + " horas.");
+                double hours = this.Tiempoparqueo.toHours();
+                
+                if (hours >= CANTIDAD_HORAS) {
+                    double precio = hours*pagoTarifa;
+                    double precioDesc = precio * DESC;
+                    precioFinal = precio - precioDesc;
+                }else{
+                    precioFinal = hours*pagoTarifa;
+                    return false;
                 }
                 //Actualizacion lista
                 d.leidos.set(i, lineaActualizada);
-                System.out.println("Línea actualizada: " + lineaActualizada);
-
                 return true;
-            
         }}
         return false;
     }
@@ -111,12 +112,11 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
                 
                 //tomar el primer elemento de atras hacia adelante
                 String pago = datos[datos.length - 1].trim();
-                this.pagoTarifa = pago;
+                this.pagoTarifa = Double.parseDouble(pago);
 
                 //Duracion
                 Duration duracion = Duration.between(horaEntrada, ahora);
-                double horasTotales = duracion.toHours();
-                this.Tiempoparqueo = horasTotales;
+                this.Tiempoparqueo = duracion;
                 return true;
                
             } 
@@ -124,4 +124,6 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         return false;
     }
 
+    
+    
 }

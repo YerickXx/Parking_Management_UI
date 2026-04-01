@@ -1,11 +1,13 @@
-
 package GUI;
+
 import Logic.Logic_Validaciones;
 import Logic.Logic_Salida;
 
 public class Salida_Vehiculos extends javax.swing.JFrame {
+
     Logic_Validaciones v = new Logic_Validaciones();
     Logic_Salida s = new Logic_Salida();
+
     /**
      * Creates new form Salida_Vehiculos
      */
@@ -13,6 +15,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setSize(420, 380);
+
     }
 
     /**
@@ -162,26 +165,24 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         new GUI.mainMenu().setVisible(true); // genera la vista de la ventana del menu principal
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Buscar_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_VehiculoActionPerformed
-        s.TomarDatos();
-        Label_MostrarPlaca.setText(Input_placa.getText());
-        Label_MostrarServicio.setText(s.TipoServicio);
-        Label_HoraEntrada.setText(s.entrada);
-        Label_HoraSalida.setText(s.Salida);
-        Mostrar_PagoTotal.setText(s.pagoTarifa);
-        //Mostrar_TiempoEnParqueo.setText(s.Tiempoparqueo);
-        if(v.ValidacionInputAlphaNum(Input_placa.getText()))
-        {
-            if(s.Existencia_Actualizacion(Input_placa.getText())){
-            jOptionPane1.showMessageDialog(this,"Vehiculo encontrado!");
-            if(s.AplicarDescuento())
-            {
-                jOptionPane1.showMessageDialog(this,"Felicidades has estado al menos 8 horas por lo que aplica un 10% de descuento!");
+
+        if (v.ValidacionInputAlphaNum(Input_placa.getText())) {
+            if (s.Existencia_Actualizacion(Input_placa.getText())) {
+                s.TomarDatos();
+                boolean descuento = s.AplicarDescuento();
+                 Labels();
+                if (descuento) {
+                    jOptionPane1.showMessageDialog(this, "Felicidades has estado al menos 8 horas por lo que aplica un 10% de descuento!");
+                }
+            } else {
+                jOptionPane1.showMessageDialog(this, "Vehiculo no encontrado!");
+                this.dispose();
+                new GUI.mainMenu().setVisible(true);
             }
-            }else{jOptionPane1.showMessageDialog(this,"Vehiculo no encontrado!");}
         }
     }//GEN-LAST:event_Buscar_VehiculoActionPerformed
 
@@ -190,6 +191,16 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         this.dispose();
         new GUI.mainMenu().setVisible(true);
     }//GEN-LAST:event_Salida_VehiculoActionPerformed
+
+    public void Labels() {
+        Label_MostrarPlaca.setText(Input_placa.getText().toUpperCase().trim());
+        Label_HoraEntrada.setText(s.entrada);
+        Label_HoraSalida.setText(s.Salida);
+        String horasParqueo = String.valueOf(s.Tiempoparqueo.toHours());
+        Mostrar_TiempoEnParqueo.setText(horasParqueo);
+        Mostrar_PagoTotal.setText(String.valueOf(s.precioFinal));
+        Label_MostrarServicio.setText(s.TipoServicio);
+    }
 
     /**
      * @param args the command line arguments
