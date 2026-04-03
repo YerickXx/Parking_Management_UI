@@ -2,14 +2,16 @@ package Main;
 
 import GUI.mainMenu;
 import Data.Data;
-
+import Data.DataAtendidos;
 public class Main {
     
     
 public static void llamadoCrearArchivo()
-{
+{       
       Data d = new Data();
       d.CrearArchivo();
+      DataAtendidos A = new DataAtendidos();
+      A.VehiculosAtendidos();
 }
     
     public static void main(String[] args) {

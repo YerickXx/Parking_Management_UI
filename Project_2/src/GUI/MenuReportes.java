@@ -3,19 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
-/**
- *
- * @author yeric
- */
+import Logic.LogicReportes;
 public class MenuReportes extends javax.swing.JFrame {
-
+LogicReportes R = new LogicReportes();
     /**
      * Creates new form MenuReportes
      */
     public MenuReportes() {
         initComponents();
         setLocationRelativeTo(null);
+        R.leerAtendidos();
     }
     
 
@@ -35,8 +32,8 @@ public class MenuReportes extends javax.swing.JFrame {
         Boton_Porcentaje = new javax.swing.JButton();
         Boton_Atendidos = new javax.swing.JButton();
         Boton_Regresar = new javax.swing.JButton();
-        OptionPane_Caracteristica1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
+        OptionPane_Caracteristica1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,19 +52,29 @@ public class MenuReportes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Boton_Horas);
-        Boton_Horas.setBounds(10, 50, 150, 27);
+        Boton_Horas.setBounds(150, 60, 150, 27);
 
         Boton_Pagos.setText("Pagos totales");
         jPanel1.add(Boton_Pagos);
-        Boton_Pagos.setBounds(10, 90, 150, 27);
+        Boton_Pagos.setBounds(150, 100, 150, 27);
 
         Boton_Porcentaje.setText("Porcentaje Uso");
+        Boton_Porcentaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_PorcentajeActionPerformed(evt);
+            }
+        });
         jPanel1.add(Boton_Porcentaje);
-        Boton_Porcentaje.setBounds(10, 140, 150, 27);
+        Boton_Porcentaje.setBounds(150, 140, 150, 27);
 
         Boton_Atendidos.setText("Vehiculos Atendidos");
+        Boton_Atendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_AtendidosActionPerformed(evt);
+            }
+        });
         jPanel1.add(Boton_Atendidos);
-        Boton_Atendidos.setBounds(10, 180, 150, 27);
+        Boton_Atendidos.setBounds(150, 180, 150, 27);
 
         Boton_Regresar.setText("Regresar");
         Boton_Regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,13 +84,13 @@ public class MenuReportes extends javax.swing.JFrame {
         });
         jPanel1.add(Boton_Regresar);
         Boton_Regresar.setBounds(10, 260, 100, 27);
-        jPanel1.add(OptionPane_Caracteristica1);
-        OptionPane_Caracteristica1.setBounds(180, 50, 210, 170);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(1, -4, 660, 310);
+        jLabel1.setBounds(0, 0, 660, 310);
+        jPanel1.add(OptionPane_Caracteristica1);
+        OptionPane_Caracteristica1.setBounds(210, 230, 210, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +114,14 @@ public class MenuReportes extends javax.swing.JFrame {
         this.dispose();
         new GUI.mainMenu().setVisible(true);
     }//GEN-LAST:event_Boton_RegresarActionPerformed
+
+    private void Boton_AtendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AtendidosActionPerformed
+        OptionPane_Caracteristica1.showMessageDialog(this,R.VehiculosAtendidos());
+    }//GEN-LAST:event_Boton_AtendidosActionPerformed
+
+    private void Boton_PorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_PorcentajeActionPerformed
+        OptionPane_Caracteristica1.showMessageDialog(this,R.PorcentajeUso());
+    }//GEN-LAST:event_Boton_PorcentajeActionPerformed
 
     /**
      * @param args the command line arguments

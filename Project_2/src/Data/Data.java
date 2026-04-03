@@ -8,9 +8,10 @@ import java.util.Scanner;             // El Scanner para leer los archivos
 import java.util.ArrayList;
 
 public class Data implements Interfaces.ManejoDatos {
+
     public ArrayList<String> leidos = new ArrayList<>(); // lista para cargar los datos leidos
 
-    // Creacion de archivo .dat
+    // Creacion de archivo .txt para los vehiculos en parqueo
     private boolean NuevoArchivo() {
         try {
             File files = new File("Vehiculos.txt");
@@ -36,7 +37,7 @@ public class Data implements Interfaces.ManejoDatos {
 
     // Escritura de archivos .dat
     private boolean Escritura(List<Vehiculo> vehiculo) {
-        try (FileWriter escribir = new FileWriter("Vehiculos.txt",true)) {
+        try (FileWriter escribir = new FileWriter("Vehiculos.txt", true)) {
             for (Vehiculo s : vehiculo) {
                 escribir.write(s.toString() + "\n");
             }
@@ -46,44 +47,41 @@ public class Data implements Interfaces.ManejoDatos {
             return false;
         }
     }
-    
+
     @Override
     public void actualizarArchivo(ArrayList<String> lineasActualizadas) {
-    // En false para no agregar al final
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter("Vehiculos.txt", false))) {
-        for (String linea : lineasActualizadas) {
-            bw.write(linea);
-            bw.newLine();
+        // En false para no agregar al final
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Vehiculos.txt", false))) {
+            for (String linea : lineasActualizadas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
+
     @Override
-    public boolean GuardarVehiculo(List<Vehiculo> vehiculo) 
-    {
-        
+    public boolean GuardarVehiculo(List<Vehiculo> vehiculo) {
+
         return Escritura(vehiculo);
     }
 
     // Lectura de los archivos .dat
-    private void Lectura() 
-    {
+    private void Lectura() {
         leidos.clear();
         File leer = new File("Vehiculos.txt");
-        try(Scanner lector = new Scanner(leer))// nuevo try-with-resources (cierra de forma automatica los archivos)
+        try (Scanner lector = new Scanner(leer))// nuevo try-with-resources (cierra de forma automatica los archivos)
         {
-            while(lector.hasNextLine())
-            {
+            while (lector.hasNextLine()) {
                 String dat = lector.nextLine(); // lectura linea a linea
                 leidos.add(dat);
-               
+
             }
-        } catch(FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-       
+
     }
 
     @Override

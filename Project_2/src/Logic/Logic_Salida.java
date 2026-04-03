@@ -4,9 +4,10 @@ import Data.Data;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.util.ArrayList;
+import Data.DataAtendidos;
 
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
-
+    DataAtendidos A = new DataAtendidos();
     Data d = new Data();
     ArrayList <String> atendidos = new ArrayList<>(); // lista para vehiculos atendidos (que salieron)
 
@@ -75,6 +76,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
             String lineaActual = d.leidos.get(i);
             if (lineaActual.contains(p)) {
                 atendidos.add(lineaActual);
+                A.EscrituraAtendidos(atendidos);
                 d.leidos.remove(i);
             }
         }

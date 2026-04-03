@@ -1,10 +1,17 @@
 package Logic;
-
+import Data.DataAtendidos;
+import java.time.LocalDate;
 
 public class LogicReportes implements Interfaces.ManejoReportes 
 {
-    Logic_Salida L = new Logic_Salida();
+    LocalDate D = LocalDate.now();
+    DataAtendidos L = new DataAtendidos();
  
+    public void leerAtendidos()
+    {
+        L.lecturaAtendidos();
+    }
+    
     @Override
     public String HorasTotales()
     {
@@ -17,19 +24,19 @@ public class LogicReportes implements Interfaces.ManejoReportes
         return "";
     }
     
-    @Override
-    public String PorcentajeUso()
-    {
-        for(String cantidad : L.atendidos)
-        {
-            return String.valueOf(cantidad);
-        }
-        return "";
-    }
+   @Override
+public String PorcentajeUso() {
+    int cantidad = L.vAtendidos.size();
+    int espaciosMax = 10;
+    double porcentaje = ((double) cantidad / espaciosMax) * 100;
+    return "El porcentaje de uso del parqueo del dia: " + D + " Fue del: " + porcentaje+"%" + " porciento!";
+}
     
     @Override
     public String VehiculosAtendidos()
     {
-        return String.valueOf(L.atendidos.size());
+      int cantidad = L.vAtendidos.size();
+     return "La cantidad de vehiculos atendidos del dia: "+D+ " Fueron "+String.valueOf(cantidad)+" vehiculos";
     }
+    
 }
