@@ -34,7 +34,6 @@ Logic L = new Logic();
         Boton_Reportes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +73,11 @@ Logic L = new Logic();
         Boton_Reportes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Boton_Reportes.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Reportes.setText("Reporte");
+        Boton_Reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ReportesActionPerformed(evt);
+            }
+        });
         jPanel1.add(Boton_Reportes);
         Boton_Reportes.setBounds(150, 200, 79, 27);
 
@@ -90,8 +94,6 @@ Logic L = new Logic();
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 400, 300);
-        jPanel1.add(jOptionPane1);
-        jOptionPane1.setBounds(70, 190, 262, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +127,11 @@ Logic L = new Logic();
         this.dispose();
     }//GEN-LAST:event_Boton_SalidaActionPerformed
 
+    private void Boton_ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ReportesActionPerformed
+        GUI.MenuReportes.reportes();
+        this.dispose();
+    }//GEN-LAST:event_Boton_ReportesActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -134,7 +141,6 @@ Logic L = new Logic();
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

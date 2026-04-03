@@ -3,10 +3,12 @@ package Logic;
 import Data.Data;
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
 
     Data d = new Data();
+    ArrayList <String> atendidos = new ArrayList<>(); // lista para vehiculos atendidos (que salieron)
 
     public Duration Tiempoparqueo;
     public String entrada = "";
@@ -39,12 +41,6 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         return true;
     }
 
-    @Override
-    public boolean AplicarDescuento() {
-        return CalculosFactura();
-
-    }
-
     private boolean CalculosFactura() {
             for (int i = 0; i < d.leidos.size(); i++) {
                 String lineaActual = d.leidos.get(i).toString();
@@ -66,11 +62,19 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
             }
         return false;
     }
+    
+    @Override
+    public boolean AplicarDescuento() {
+        return CalculosFactura();
+
+    }
+
 
     public boolean BorrarVehiculo(String p) {
         for (int i = d.leidos.size() - 1; i >= 0; i--) {
             String lineaActual = d.leidos.get(i);
             if (lineaActual.contains(p)) {
+                atendidos.add(lineaActual);
                 d.leidos.remove(i);
             }
         }
