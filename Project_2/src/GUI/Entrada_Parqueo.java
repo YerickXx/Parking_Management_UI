@@ -102,6 +102,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         SeleccionMoto = new javax.swing.JComboBox<>();
         Spinner_Ejes = new javax.swing.JSpinner();
         LabelCamion = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         imagenEntrada = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
         jOptionPane2 = new javax.swing.JOptionPane();
@@ -245,6 +247,12 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
         jPanel1.add(LabelCamion);
         LabelCamion.setBounds(220, 160, 120, 15);
 
+        jLabel5.setText("Contador:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(210, 90, 60, 16);
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(280, 90, 50, 0);
+
         imagenEntrada.setFont(new java.awt.Font("Georgia Pro", 1, 12)); // NOI18N
         imagenEntrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagenEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
@@ -276,11 +284,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Seleccion_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoActionPerformed
-        if (!Input_PlacaRegistro.getText().isEmpty()) {
-            if (Seleccion_Vehiculo.getSelectedItem().toString().equalsIgnoreCase("Automovil")) {
 
-            }
-        }
 
     }//GEN-LAST:event_Seleccion_VehiculoActionPerformed
 
@@ -305,18 +309,21 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
                 switch (ops) {
                     case "Automovil" -> {
                         getElementosVehiculo();
+                        d.EspaciosEnParqueo();
                         this.dispose();
                         new GUI.mainMenu().setVisible(true);
                         break;
                     }
                     case "Motocicleta" -> {
                         getElementosMoto();
+                        d.EspaciosEnParqueo();
                         this.dispose();
                         new GUI.mainMenu().setVisible(true);
                         break;
                     }
                     case "Camion" -> {
                         getElementosCamion();
+                        d.EspaciosEnParqueo();
                         this.dispose();
                         new GUI.mainMenu().setVisible(true);
                         break;
@@ -343,6 +350,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void Seleccion_VehiculoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoItemStateChanged
 
         String op = Seleccion_Vehiculo.getSelectedItem().toString();
+                jLabel6.setText(d.contador());
         switch (op) {
             case "Automovil" -> {
                 Seleccion_Gas.setVisible(true);
@@ -454,6 +462,8 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JPanel jPanel1;

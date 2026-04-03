@@ -22,9 +22,9 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         public List<Vehiculo> vehiculos = new ArrayList<>();
     
     // variables con valores para no tenerlas harcodeadas
-    double  tarifaDiaAutomovil = 5000.0;
-    double  tarifaDiaCamion = 5000.0;
-    double tarifaDiaMotocicleta = 3000.0;
+    public double  tarifaDiaAutomovil = 5000.0;
+    public double  tarifaDiaCamion = 5000.0;
+    public double tarifaDiaMotocicleta = 3000.0;
     double tarifaHoraAuto = 600.0;
     double tarifaHoraCamion = 600.0;
     double tarifaHoraMotocicleta = 500.0;

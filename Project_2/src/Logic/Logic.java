@@ -4,12 +4,13 @@ import Data.Data;
 public class Logic implements Interfaces.Control_Espacios{
     Data d = new Data();
     final int ESPACIOS_TOTALES = 10; // se usan mayusculas al ser un final para distinguirla de las variables
+    final int ESPACIOS_RESTANTES = 5;
+    int contadorEspacios = 0;
     
     @Override
     public boolean EspaciosEnParqueo()
     {
-        d.LeerVehiculo();
-        if(d.leidos.size() < ESPACIOS_TOTALES)
+        if(contadorEspacios < ESPACIOS_TOTALES)
         {
             return true;
         }
@@ -19,7 +20,6 @@ public class Logic implements Interfaces.Control_Espacios{
     @Override
     public boolean cincoEspacios()
     {
-        final int ESPACIOS_RESTANTES = 5;
         d.LeerVehiculo();
         if(d.leidos.size() == ESPACIOS_RESTANTES)
         {
@@ -27,4 +27,13 @@ public class Logic implements Interfaces.Control_Espacios{
         }
         return false;
     }
+    
+    public String  contador()
+    {
+        d.LeerVehiculo();
+        contadorEspacios += d.leidos.size();
+        
+        return String.valueOf(contadorEspacios);
+    }
+    
 }
