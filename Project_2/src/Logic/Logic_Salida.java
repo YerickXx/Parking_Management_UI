@@ -9,7 +9,7 @@ import Data.DataAtendidos;
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
     DataAtendidos A = new DataAtendidos();
     Data d = new Data();
-    ArrayList <String> atendidos = new ArrayList<>(); // lista para vehiculos atendidos (que salieron)
+    public ArrayList <String> atendidos = new ArrayList<>(); // lista para vehiculos atendidos (que salieron)
 
     public Duration Tiempoparqueo;
     public String entrada = "";
@@ -17,6 +17,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
     public String TipoServicio = "";
     public double pagoTarifa = 0.0;
     public double precioFinal = 0.0;
+    public boolean estado = false;
 
     // Constantes, se utilizan mayusculas por regla general de constantes
     final int CANTIDAD_HORAS = 8;
@@ -48,18 +49,23 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
                 // Descuento
                 String lineaActualizada = lineaActual.replace(",null,", "," + Salida + ",");
                 double hours = this.Tiempoparqueo.toHours();
-
+                
+                
                 if (hours >= CANTIDAD_HORAS) {
                     double precio = hours * pagoTarifa;
                     double precioDesc = precio * DESC;
                     precioFinal = precio - precioDesc;
+                    estado = true;
+                    
                 } else {
                     precioFinal = hours * pagoTarifa;
-                    return false;
+                    estado = false;
                 }
                 //Actualizacion lista
                 d.leidos.set(i, lineaActualizada);
-                return true;
+                atendidos.add(lineaActualizada);
+                A.EscrituraAtendidos(atendidos);
+                 return true;
             }
         return false;
     }
@@ -75,8 +81,6 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         for (int i = d.leidos.size() - 1; i >= 0; i--) {
             String lineaActual = d.leidos.get(i);
             if (lineaActual.contains(p)) {
-                atendidos.add(lineaActual);
-                A.EscrituraAtendidos(atendidos);
                 d.leidos.remove(i);
             }
         }

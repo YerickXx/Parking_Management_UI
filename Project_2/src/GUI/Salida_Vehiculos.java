@@ -177,7 +177,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
                 boolean descuento = s.AplicarDescuento();
                 
                  Labels();
-                if (descuento) {
+                if (s.estado) {
                     jOptionPane1.showMessageDialog(this, "Felicidades has estado al menos 8 horas por lo que aplica un 10% de descuento!");
                 }
             } else {
