@@ -55,6 +55,11 @@ LogicReportes R = new LogicReportes();
         Boton_Horas.setBounds(150, 60, 150, 27);
 
         Boton_Pagos.setText("Pagos totales");
+        Boton_Pagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_PagosActionPerformed(evt);
+            }
+        });
         jPanel1.add(Boton_Pagos);
         Boton_Pagos.setBounds(150, 100, 150, 27);
 
@@ -122,6 +127,10 @@ LogicReportes R = new LogicReportes();
     private void Boton_PorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_PorcentajeActionPerformed
         OptionPane_Caracteristica1.showMessageDialog(this,R.PorcentajeUso());
     }//GEN-LAST:event_Boton_PorcentajeActionPerformed
+
+    private void Boton_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_PagosActionPerformed
+        OptionPane_Caracteristica1.showMessageDialog(this,R.PagosTotales());
+    }//GEN-LAST:event_Boton_PagosActionPerformed
 
     /**
      * @param args the command line arguments

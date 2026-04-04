@@ -6,7 +6,7 @@ package GUI;
 
 import Logic.Logic_Objetos;
 import Logic.Logic_Validaciones;
-import Logic.Logic;
+import Logic.Logic_Espacios;
 /**
  *
  * @author yeric
@@ -15,7 +15,7 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
 
     Logic_Objetos L = new Logic_Objetos();
     Logic_Validaciones V = new Logic_Validaciones();
-    Logic d = new Logic();
+    Logic_Espacios d = new Logic_Espacios();
 
     /**
      * Creates new form Entrada_Parqueo
@@ -350,7 +350,6 @@ public class Entrada_Parqueo extends javax.swing.JFrame {
     private void Seleccion_VehiculoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Seleccion_VehiculoItemStateChanged
 
         String op = Seleccion_Vehiculo.getSelectedItem().toString();
-                jLabel6.setText(d.contador());
         switch (op) {
             case "Automovil" -> {
                 Seleccion_Gas.setVisible(true);

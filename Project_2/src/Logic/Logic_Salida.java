@@ -19,6 +19,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
     public double pagoTarifa = 0.0;
     public double precioFinal = 0.0;
     public boolean estado = false;
+    public String placaActual = ""; 
 
     // Constantes, se utilizan mayusculas por regla general de constantes
     final int CANTIDAD_HORAS = 8;
@@ -45,17 +46,20 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
     }
 
     private boolean CalculosFactura() {
+        if (this.Tiempoparqueo == null) return false;
         for (int i = 0; i < d.leidos.size(); i++) {
             String lineaActual = d.leidos.get(i).toString();
             // Descuento
+            
+            if(lineaActual.contains(this.placaActual) && lineaActual.contains(",null,")){
             String lineaActualizada = lineaActual.replace(",null,", "," + Salida + ",");
             double hours = this.Tiempoparqueo.toMinutes();
             double horasRedondeadas = Math.ceil(hours / 60);
 
-            // verificamos si la linea actual es moto o vehiculo para determinar el precio sobre el cual se haran calculos
-             pagoTarifa = (lineaActual.contains("Motocilceta"))? 500.0 : 600;
+            if(this.TipoServicio.equalsIgnoreCase("Por hora")){
+             
                 if (hours >= 0 && hours <= 60) {
-                    precioFinal = 600.0;
+                    precioFinal = pagoTarifa;
                     estado = false;
                 } 
             else if (hours >= CANTIDAD_HORAS) {
@@ -67,12 +71,16 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
             } else {
                 precioFinal = horasRedondeadas * pagoTarifa;
                 estado = false;
+            }}
+            else{
+                precioFinal = pagoTarifa; 
+                estado  = false;
             }
             //Actualizacion lista
             d.leidos.set(i, lineaActualizada);
             atendidos.add(lineaActualizada);
             return true;
-        }
+        }}
         return false;
     }
 
@@ -86,7 +94,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         for (int i = d.leidos.size() - 1; i >= 0; i--) {
             String lineaActual = d.leidos.get(i);
             if (lineaActual.contains(p)) {
-                A.EscrituraAtendidos(atendidos);
+                A.EscrituraAtendidos(atendidos);    
                 d.leidos.remove(i);
             }
         }
@@ -95,11 +103,12 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
     }
 
     @Override
-    public boolean TomarDatos() {
+    public boolean TomarDatos(String p) {
         for (int i = 0; i < d.leidos.size(); i++) {
             String lineaActual = d.leidos.get(i).toString();
 
-            if (lineaActual.contains(",null,")) {
+            if (lineaActual.contains(",null,") && lineaActual.contains(p)) {  
+                this.placaActual = p;
                 LocalDateTime ahora = LocalDateTime.now().withNano(0).withSecond(0);
                 this.Salida = ahora.toString();
 

@@ -6,6 +6,7 @@ public class LogicReportes implements Interfaces.ManejoReportes
 {
     LocalDate D = LocalDate.now();
     DataAtendidos L = new DataAtendidos();
+        public double pagosTotales = 0.0;
  
     public void leerAtendidos()
     {
@@ -15,13 +16,23 @@ public class LogicReportes implements Interfaces.ManejoReportes
     @Override
     public String HorasTotales()
     {
-        return "";
+      return "";
     }
     
     @Override
     public String PagosTotales()
     {
-        return "";
+        for(int i = 0; i<L.vAtendidos.size(); i++)
+        {
+            String linea = L.vAtendidos.get(i);
+            if(linea.contains(",600.0"))
+            {
+                String[] datos = linea.split(",");
+                String strEntrada = datos[datos.length - 1].trim();
+                pagosTotales += Double.parseDouble(strEntrada);
+            }
+        }
+        return "Los pagos totales efectuados el dia: "+D+" fueron de: "+String.valueOf(pagosTotales)+" colones";
     }
     
    @Override

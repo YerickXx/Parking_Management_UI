@@ -40,7 +40,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
 
             switch (type) {
                 case "Automovil" -> {
-                    if (str[1].equalsIgnoreCase("Por dia")) {
+                    if (str[2].equalsIgnoreCase("Por dia")) {
                         creacionYguardadoAutomovil(str);
                     } else {
                         creacionYguardadoAutomovilHora(str);
@@ -48,7 +48,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
                 }
 
                 case "Motocicleta" -> {
-                    if (str[1].equalsIgnoreCase("Por dia")) {
+                    if (str[2].equalsIgnoreCase("Por dia")) {
                         creacionYguardadoMotocicleta(str);
                     } else {
                         creacionYguardadoMotocicletaHora(str);
@@ -56,7 +56,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
                 }
 
                 case "Camion" -> {
-                    if (str[1].equalsIgnoreCase("Por dia")) {
+                    if (str[2].equalsIgnoreCase("Por dia")) {
                         creacionYguardadoCamion(str);
                     } else {
                         creacionYguardadoCamionHora(str);

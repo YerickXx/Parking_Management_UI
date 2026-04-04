@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-import Logic.Logic;
+import Logic.Logic_Espacios;
 /**
  *
  * @author yeric
  */
 public class mainMenu extends javax.swing.JFrame {
-Logic L = new Logic();
+Logic_Espacios L = new Logic_Espacios();
     /**
      * Creates new form mainMenu
      */
