@@ -9,6 +9,7 @@ import Data.DataAtendidos;
 public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacion de interfaz de salida
 
     DataAtendidos A = new DataAtendidos();
+    LogicReportes L = new LogicReportes();
     Data d = new Data();
     public ArrayList<String> atendidos = new ArrayList<>(); // lista para vehiculos atendidos (que salieron)
 
@@ -94,7 +95,7 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         for (int i = d.leidos.size() - 1; i >= 0; i--) {
             String lineaActual = d.leidos.get(i);
             if (lineaActual.contains(p)) {
-                A.EscrituraAtendidos(atendidos);    
+                A.EscrituraAtendidos(atendidos); 
                 d.leidos.remove(i);
             }
         }

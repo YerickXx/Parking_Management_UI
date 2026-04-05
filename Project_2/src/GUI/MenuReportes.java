@@ -112,7 +112,7 @@ LogicReportes R = new LogicReportes();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_HorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_HorasActionPerformed
-        // TODO add your handling code here:
+           OptionPane_Caracteristica1.showMessageDialog(this,R.HorasTotales());
     }//GEN-LAST:event_Boton_HorasActionPerformed
 
     private void Boton_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegresarActionPerformed
