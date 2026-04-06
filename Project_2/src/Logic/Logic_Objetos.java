@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/* Clase encargada del ingreso de vehiculos  */
 package Logic;
 
+// importacion de clases y librerias necesarias
 import Entities.Automovil;
 import Entities.Camion;
 import Entities.Motocicleta;
@@ -18,8 +16,8 @@ import Data.Data;
  * @author yeric
  */
 public class Logic_Objetos implements Interfaces.manejoObjetos {
-        Data d = new Data();
-        public List<Vehiculo> vehiculos = new ArrayList<>();
+        Data d = new Data(); // llamado de data para trabajar el txt
+        public List<Vehiculo> vehiculos = new ArrayList<>(); // lista de objetos
     
     // variables con valores para no tenerlas harcodeadas
     public double  tarifaDiaAutomovil = 5000.0;
@@ -66,7 +64,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         
 
     }
-       // metodo para crear y guardar el automovil
+       // metodo para crear y guardar el automovil por dia
     @Override
     public void creacionYguardadoAutomovil(String... str) {
 
@@ -87,6 +85,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
+    // metodo para crear y guardar el automovil por Hora
     @Override
     public void creacionYguardadoAutomovilHora(String... str) {
         String Aplaca = str[1];
@@ -106,6 +105,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
+     // metodo para crear y guardar la motocicleta por Hora
     @Override
     public void creacionYguardadoMotocicletaHora(String... str) {
         String Mplaca = str[1];
@@ -124,7 +124,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
-    // metodo para crear y guardar la motocicleta
+    // metodo para crear y guardar la motocicleta por dia
     @Override
     public void creacionYguardadoMotocicleta(String... str) {
         String Mplaca = str[1];
@@ -143,7 +143,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
-    // metodo para crear y guardar el camion
+    // metodo para crear y guardar el camion por dia 
     @Override
     public void creacionYguardadoCamion(String... str) {
         String Cplaca = str[1];
@@ -161,6 +161,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
+    // metodo para crear y guardar el camion por Hora
     @Override
     public void creacionYguardadoCamionHora(String... str) {
         String Cplaca = str[1];
@@ -178,6 +179,7 @@ public class Logic_Objetos implements Interfaces.manejoObjetos {
         GuardarVehiculos(vehiculos);
     }
 
+    // metodo para guaradar los vehiculos en la lista
     @Override
     public void GuardarVehiculos(List<Vehiculo> vehiculo) {
         d.GuardarVehiculo(vehiculo);

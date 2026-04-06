@@ -1,3 +1,4 @@
+/*Clase que desarrolla diferentes funciones para validacion de distintos inputs*/
 
 package Logic;
 import Data.Data;
@@ -38,7 +39,7 @@ public class Logic_Validaciones implements Interfaces.Validaciones {
         return validarDouble(str);
     }
 
-
+    // Validacion unicidad de placa 
     public boolean placaUnica (String str) {
         String placa = str;
         d.LeerVehiculo();
@@ -51,6 +52,7 @@ public class Logic_Validaciones implements Interfaces.Validaciones {
         return false;
     }
     
+    // Validacion capacidad de carga del camion
     public boolean ValidarCarga(String... str) // validacion capacidad de carga de acuerdo a la ley
     {
         int ejes = Integer.parseInt(str[1]);
