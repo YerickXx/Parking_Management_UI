@@ -81,17 +81,44 @@ public class LogicReportes implements Interfaces.ManejoReportes
      return "La cantidad de vehiculos atendidos del dia: "+D+ " Fueron "+String.valueOf(cantidad)+" vehiculos";
     }
     
-    @Override
-     public String MostrarVehiculos() {
-        String contenido = "";
-        L.lecturaAtendidos();
-        if (!L.vAtendidos.isEmpty()) {
-            for (var s : L.vAtendidos) {
-                contenido += s.toString() + "\n";
-            }
-            return contenido;
+   @Override
+public String MostrarVehiculos() {
+    StringBuilder sb = new StringBuilder();
+    
+    // Cargamos los datos actualizados desde el archivo
+    L.lecturaAtendidos();
+
+    if (!L.vAtendidos.isEmpty()) {
+        sb.append("===========================================\n");
+        sb.append("        LISTADO DE VEHÍCULOS ATENDIDOS     \n");
+        sb.append("           Fecha: ").append(java.time.LocalDate.now()).append("\n");
+        sb.append("===========================================\n\n");
+
+        int contador = 1;
+        for (var v : L.vAtendidos) {
+            //Separamos la línea por comas
+            String[] datos = v.toString().split(","); 
+            
+            sb.append(contador).append(". ");
+            sb.append("Placa: ").append(datos[1]).append(" | ");
+            sb.append("Tipo: ").append(datos[0]).append(" | ");
+            sb.append("Servicio: ").append(datos[2]).append(" | ");
+            
+            //EXTRACCIÓN DEL MONTO TOTAL (El que sale en la factura)
+            String montoFactura = datos[datos.length - 1]; 
+            
+            sb.append("Total pagado: ₡").append(montoFactura).append("\n");
+            
+            contador++;
         }
-        return "";
+
+        sb.append("\nTotal de vehículos atendidos: ").append(L.vAtendidos.size()).append("\n");
+        sb.append("===========================================");
+        
+        return sb.toString();
     }
+    
+    return "No se encontraron registros de vehículos atendidos.";
+}
     
 }

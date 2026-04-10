@@ -44,8 +44,11 @@ LogicReportes R = new LogicReportes();
         jLabel2.setFont(new java.awt.Font("Swis721 Blk BT", 1, 14)); // NOI18N
         jLabel2.setText("SUB MENU DE REPORTES");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(110, 10, 200, 18);
+        jLabel2.setBounds(140, 10, 200, 18);
 
+        Boton_Horas.setBackground(new java.awt.Color(255, 255, 255));
+        Boton_Horas.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Boton_Horas.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Horas.setText("Horas Totales");
         Boton_Horas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,8 +56,11 @@ LogicReportes R = new LogicReportes();
             }
         });
         jPanel1.add(Boton_Horas);
-        Boton_Horas.setBounds(150, 60, 150, 27);
+        Boton_Horas.setBounds(150, 60, 150, 26);
 
+        Boton_Pagos.setBackground(new java.awt.Color(255, 255, 255));
+        Boton_Pagos.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Boton_Pagos.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Pagos.setText("Pagos totales");
         Boton_Pagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,8 +68,11 @@ LogicReportes R = new LogicReportes();
             }
         });
         jPanel1.add(Boton_Pagos);
-        Boton_Pagos.setBounds(150, 100, 150, 27);
+        Boton_Pagos.setBounds(150, 100, 150, 26);
 
+        Boton_Porcentaje.setBackground(new java.awt.Color(255, 255, 255));
+        Boton_Porcentaje.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Boton_Porcentaje.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Porcentaje.setText("Porcentaje Uso");
         Boton_Porcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,16 +80,19 @@ LogicReportes R = new LogicReportes();
             }
         });
         jPanel1.add(Boton_Porcentaje);
-        Boton_Porcentaje.setBounds(150, 140, 150, 27);
+        Boton_Porcentaje.setBounds(150, 140, 150, 26);
 
-        Boton_Atendidos.setText("Cantidad de vehiculos atendidos");
+        Boton_Atendidos.setBackground(new java.awt.Color(255, 255, 255));
+        Boton_Atendidos.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Boton_Atendidos.setForeground(new java.awt.Color(153, 153, 153));
+        Boton_Atendidos.setText("Cantidad vehiculos atendidos");
         Boton_Atendidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_AtendidosActionPerformed(evt);
             }
         });
         jPanel1.add(Boton_Atendidos);
-        Boton_Atendidos.setBounds(110, 180, 220, 27);
+        Boton_Atendidos.setBounds(100, 180, 240, 26);
 
         Boton_Regresar.setText("Regresar");
         Boton_Regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +103,9 @@ LogicReportes R = new LogicReportes();
         jPanel1.add(Boton_Regresar);
         Boton_Regresar.setBounds(10, 260, 100, 27);
 
+        Ver_Atendidos.setBackground(new java.awt.Color(255, 255, 255));
+        Ver_Atendidos.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        Ver_Atendidos.setForeground(new java.awt.Color(153, 153, 153));
         Ver_Atendidos.setText("Vehiculos Atendidos");
         Ver_Atendidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +113,7 @@ LogicReportes R = new LogicReportes();
             }
         });
         jPanel1.add(Ver_Atendidos);
-        Ver_Atendidos.setBounds(150, 220, 150, 27);
+        Ver_Atendidos.setBounds(130, 220, 180, 26);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -143,8 +158,8 @@ LogicReportes R = new LogicReportes();
     }//GEN-LAST:event_Boton_PagosActionPerformed
 
     private void Ver_AtendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_AtendidosActionPerformed
-        GUI.LeerVehiculosAtendidos.VerAtendidos();
-        this.dispose();
+         String contenido =  R.MostrarVehiculos();
+        OptionPane_Caracteristica1.showMessageDialog(this,contenido);
     }//GEN-LAST:event_Ver_AtendidosActionPerformed
 
     /**

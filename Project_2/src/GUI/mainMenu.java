@@ -40,7 +40,7 @@ Logic_Espacios L = new Logic_Espacios();
         jPanel1.setLayout(null);
 
         Boton_Registro.setBackground(new java.awt.Color(255, 255, 255));
-        Boton_Registro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Boton_Registro.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
         Boton_Registro.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Registro.setText("Registrar Vehiculo");
         Boton_Registro.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +49,7 @@ Logic_Espacios L = new Logic_Espacios();
             }
         });
         jPanel1.add(Boton_Registro);
-        Boton_Registro.setBounds(120, 70, 150, 27);
+        Boton_Registro.setBounds(110, 70, 170, 26);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Swis721 Blk BT", 1, 18)); // NOI18N
@@ -58,7 +58,7 @@ Logic_Espacios L = new Logic_Espacios();
         jLabel2.setBounds(110, 10, 180, 23);
 
         Boton_Salida.setBackground(new java.awt.Color(255, 255, 255));
-        Boton_Salida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Boton_Salida.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
         Boton_Salida.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Salida.setText("Salida De Vehiculo");
         Boton_Salida.addActionListener(new java.awt.event.ActionListener() {
@@ -67,10 +67,10 @@ Logic_Espacios L = new Logic_Espacios();
             }
         });
         jPanel1.add(Boton_Salida);
-        Boton_Salida.setBounds(120, 110, 150, 27);
+        Boton_Salida.setBounds(110, 110, 170, 26);
 
         Boton_Reportes.setBackground(new java.awt.Color(255, 255, 255));
-        Boton_Reportes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Boton_Reportes.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
         Boton_Reportes.setForeground(new java.awt.Color(153, 153, 153));
         Boton_Reportes.setText("Reporte");
         Boton_Reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -79,8 +79,11 @@ Logic_Espacios L = new Logic_Espacios();
             }
         });
         jPanel1.add(Boton_Reportes);
-        Boton_Reportes.setBounds(150, 200, 79, 27);
+        Boton_Reportes.setBounds(130, 190, 110, 26);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(153, 153, 153));
         jButton1.setText("Ver Vehiculos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +91,7 @@ Logic_Espacios L = new Logic_Espacios();
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(140, 160, 110, 27);
+        jButton1.setBounds(120, 150, 140, 27);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");

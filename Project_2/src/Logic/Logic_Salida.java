@@ -53,51 +53,48 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
 
     // funcion que calcula los pagos y hace ciertas validaciones dentro
     // Personalmente esta funcion puede mejorar aplicando responsabilidad unica la cual actualmente no cumple
-    private boolean CalculosFactura() {
-        if (this.Tiempoparqueo == null) return false;
-        for (int i = 0; i < d.leidos.size(); i++) {
-            String lineaActual = d.leidos.get(i).toString();
-            
-            // Descuento
-            if(lineaActual.contains(this.placaActual) && lineaActual.contains(",null,")){
+   private boolean CalculosFactura() {
+    if (this.Tiempoparqueo == null) return false;
+    for (int i = 0; i < d.leidos.size(); i++) {
+        String lineaActual = d.leidos.get(i).toString();
+        
+        if(lineaActual.contains(this.placaActual) && lineaActual.contains(",null,")){
             String lineaActualizada = lineaActual.replace(",null,", "," + Salida + ",");
             double hours = this.Tiempoparqueo.toMinutes();
-            double horasRedondeadas = Math.ceil(hours / 60); // conversion a minutos pues si el vehiculo esta menos de una hora igualmente se le cobra una hora
+            double horasRedondeadas = Math.ceil(hours / 60);
 
-            // Verificacion del servicio
             if(this.TipoServicio.equalsIgnoreCase("Por hora")){
-             
-                // verificacion si estuvo menos de una hora
                 if (hours >= 0 && hours <= 60) {
                     precioFinal = pagoTarifa; 
                     estado = false;
                 } 
-               
-            // verificacion si las horas en parqueo son 8 o mas se aplica descuento    
-            else if (hours >= CANTIDAD_HORAS) {
-                double precio = horasRedondeadas * pagoTarifa;
-                double precioDesc = precio * DESC;
-                precioFinal = precio - precioDesc;
-                estado = true;
- 
-            // si las horas no son 8 o mas se cobra normal
-            } else {
-                precioFinal = horasRedondeadas * pagoTarifa;
-                estado = false;
-            }}
-             
-            // si el servicio no es por hora se cobra por dia
-            else{
-                precioFinal = pagoTarifa; 
-                estado  = false;
+                else if (hours >= CANTIDAD_HORAS) {
+                    double precio = horasRedondeadas * pagoTarifa;
+                    double precioDesc = precio * DESC;
+                    precioFinal = precio - precioDesc;
+                    estado = true;
+                } else {
+                    precioFinal = horasRedondeadas * pagoTarifa;
+                    estado = false;
+                }
             }
-            //Actualizacion lista
+            // "Por dia" también multiplica Tarifa * Tiempo
+            else {
+                precioFinal = horasRedondeadas * pagoTarifa; 
+                estado = false;
+            }
+
+            // ACTUALIZACIÓN DE LA LÍNEA: 
+            // Concatenamos el precioFinal al final de la línea para que el reporte lo lea
+            lineaActualizada = lineaActualizada + "," + precioFinal;
+
             d.leidos.set(i, lineaActualizada);
             atendidos.add(lineaActualizada);
             return true;
-        }}
-        return false;
+        }
     }
+    return false;
+}
 
     @Override
     public boolean AplicarDescuento() {
@@ -166,5 +163,43 @@ public class Logic_Salida implements Interfaces.Manejo_Salida { // implementacio
         }
         return false;
     }
+    
+    
+    // Para esta funcion especifica me apoye de Gemini IA para generarla, pues era una funcion algo basica simplemente utilizando variables globales de esta misma clase
+    public String obtenerReciboTexto() {
+    // horas y el subtotal base (Tarifa * Tiempo)
+    double horasUso = Math.ceil(this.Tiempoparqueo.toMinutes() / 60.0);
+    
+    //el subtotal
+    double subtotalCalculado = horasUso * pagoTarifa;
+    
+    // 2. Manejo del Total
+    double montoDescuento = estado ? (subtotalCalculado * DESC) : 0;
+    double totalReal = subtotalCalculado - montoDescuento;
 
+    StringBuilder sb = new StringBuilder();
+    sb.append("--------------------------------------------------\n");
+    sb.append("           RECIBO DE SERVICIO DE PARQUEO          \n");
+    sb.append("--------------------------------------------------\n\n");
+    
+    sb.append("Placa del vehiculo: ").append(this.placaActual).append("\n");
+    sb.append("Tipo de servicio: ").append(this.TipoServicio).append("\n");
+    sb.append("Horas de uso: ").append((int)horasUso).append("\n");
+    sb.append("Tarifa: ₡").append((int)pagoTarifa).append("\n");
+    
+    //Mostramos el resultado de la multiplicación
+    sb.append("Subtotal: ₡").append((int)subtotalCalculado).append("\n");
+    
+    if (estado) {
+        sb.append("Descuento aplicado (10%): ₡").append((int)montoDescuento).append("\n");
+    }
+    
+    sb.append("--------------------------------------------------\n");
+    sb.append("TOTAL A PAGAR: ₡").append((int)totalReal).append("\n");
+    sb.append("--------------------------------------------------\n\n");
+    
+    sb.append("Gracias por utilizar nuestro servicio.");
+    
+    return sb.toString();
+}
 }

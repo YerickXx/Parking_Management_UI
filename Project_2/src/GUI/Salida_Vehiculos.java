@@ -39,14 +39,15 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         Label_MostrarServicio = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Label_HoraEntrada = new javax.swing.JLabel();
+        Mostrar_PagoTotal = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Label_HoraSalida = new javax.swing.JLabel();
         Mostrar_TiempoEnParqueo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        Mostrar_PagoTotal = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
+        jOptionPane2 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -95,41 +96,53 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(0, 310, 90, 27);
 
+        jLabel2.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Placa:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 90, 50, 16);
+        jLabel2.setBounds(10, 90, 50, 15);
         jPanel1.add(Label_MostrarPlaca);
         Label_MostrarPlaca.setBounds(60, 90, 80, 20);
 
+        jLabel3.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Servicio:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 140, 50, 16);
+        jLabel3.setBounds(10, 140, 70, 15);
         jPanel1.add(Label_MostrarServicio);
-        Label_MostrarServicio.setBounds(60, 140, 70, 20);
+        Label_MostrarServicio.setBounds(80, 140, 70, 20);
 
+        jLabel4.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Hora Entrada:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, 180, 80, 16);
+        jLabel4.setBounds(10, 180, 100, 15);
         jPanel1.add(Label_HoraEntrada);
-        Label_HoraEntrada.setBounds(90, 180, 130, 20);
+        Label_HoraEntrada.setBounds(110, 180, 130, 20);
+        jPanel1.add(Mostrar_PagoTotal);
+        Mostrar_PagoTotal.setBounds(250, 280, 90, 20);
 
+        jLabel5.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Hora Salida:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 220, 70, 16);
+        jLabel5.setBounds(10, 220, 90, 15);
         jPanel1.add(Label_HoraSalida);
-        Label_HoraSalida.setBounds(90, 220, 140, 20);
+        Label_HoraSalida.setBounds(100, 220, 140, 20);
         jPanel1.add(Mostrar_TiempoEnParqueo);
-        Mostrar_TiempoEnParqueo.setBounds(130, 270, 60, 20);
+        Mostrar_TiempoEnParqueo.setBounds(50, 280, 60, 20);
 
+        jLabel6.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Tiempo en parqueo:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 270, 110, 16);
+        jLabel6.setBounds(10, 260, 140, 15);
 
-        jLabel7.setText("Pago Total:");
+        jLabel7.setFont(new java.awt.Font("Swis721 Blk BT", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Tarifa por servicio:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(220, 280, 60, 16);
-        jPanel1.add(Mostrar_PagoTotal);
-        Mostrar_PagoTotal.setBounds(290, 280, 90, 20);
+        jLabel7.setBounds(220, 260, 140, 15);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -141,6 +154,8 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
         jLabel1.setBounds(0, -1, 410, 360);
         jPanel1.add(jOptionPane1);
         jOptionPane1.setBounds(80, 160, 262, 90);
+        jPanel1.add(jOptionPane2);
+        jOptionPane2.setBounds(140, 120, 262, 90);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,6 +204,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_Buscar_VehiculoActionPerformed
 
     private void Salida_VehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salida_VehiculoActionPerformed
+        jOptionPane2.showMessageDialog(this,s.obtenerReciboTexto());
         s.BorrarVehiculo(Input_placa.getText());
         this.dispose();
         new GUI.mainMenu().setVisible(true);
@@ -259,6 +275,7 @@ public class Salida_Vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JOptionPane jOptionPane1;
+    private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
