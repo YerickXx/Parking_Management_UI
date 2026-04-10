@@ -3,8 +3,6 @@
 ### 📋 Overview
 This is a professional-grade desktop application developed in **Java**. Unlike standard console applications, this version implements a full **Graphical User Interface (GUI)** using Swing and follows strict software engineering principles to ensure scalability and maintainability.
 
-> **Status:** 🚧 In Development
-
 ---
 
 ### 🏛️ Architecture & Design Patterns
@@ -25,7 +23,7 @@ The project is built using a **Layered Architecture** and **Interface-Based Desi
 * **Language:** Java 17+
 * **Framework:** Java Swing / AWT
 * **Version Control:** Git & GitHub (Professional Flow)
-* **Tools:** NetBeans IDE, UML Modeling tools.
+* **Tools:** NetBeans IDE
 
 ---
 
