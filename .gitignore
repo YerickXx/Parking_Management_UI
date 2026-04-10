@@ -8,3 +8,4 @@ out/
 *.exe
 Debug/
 Release/
+/Patients_Management/nbproject/private/

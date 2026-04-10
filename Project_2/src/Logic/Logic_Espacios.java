@@ -18,12 +18,13 @@ public class Logic_Espacios implements Interfaces.Control_Espacios{
     @Override
     public boolean EspaciosEnParqueo()
     {
-        return contadorEspacios < ESPACIOS_TOTALES; // retorno alterno que devuelve true o false 
+        d.LeerVehiculo(); 
+        return d.leidos.size() < ESPACIOS_TOTALES; // retorno alterno que devuelve true o false 
     }
     
        // funcion para verificar si quedan 5 espacios en parqueo
     @Override
-    public boolean cincoEspacios()
+    public boolean cincoEspacios() 
     {
         d.LeerVehiculo();
         return d.leidos.size() == ESPACIOS_RESTANTES; // retorno alterno que devuelve true o false 

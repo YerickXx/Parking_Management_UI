@@ -81,4 +81,17 @@ public class LogicReportes implements Interfaces.ManejoReportes
      return "La cantidad de vehiculos atendidos del dia: "+D+ " Fueron "+String.valueOf(cantidad)+" vehiculos";
     }
     
+    @Override
+     public String MostrarVehiculos() {
+        String contenido = "";
+        L.lecturaAtendidos();
+        if (!L.vAtendidos.isEmpty()) {
+            for (var s : L.vAtendidos) {
+                contenido += s.toString() + "\n";
+            }
+            return contenido;
+        }
+        return "";
+    }
+    
 }

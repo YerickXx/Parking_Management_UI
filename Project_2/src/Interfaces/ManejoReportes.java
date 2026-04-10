@@ -6,4 +6,5 @@ public interface ManejoReportes {
        String PagosTotales();
        String PorcentajeUso();
        String VehiculosAtendidos();
+       String MostrarVehiculos();
 }

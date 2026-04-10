@@ -32,6 +32,7 @@ LogicReportes R = new LogicReportes();
         Boton_Porcentaje = new javax.swing.JButton();
         Boton_Atendidos = new javax.swing.JButton();
         Boton_Regresar = new javax.swing.JButton();
+        Ver_Atendidos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         OptionPane_Caracteristica1 = new javax.swing.JOptionPane();
 
@@ -72,14 +73,14 @@ LogicReportes R = new LogicReportes();
         jPanel1.add(Boton_Porcentaje);
         Boton_Porcentaje.setBounds(150, 140, 150, 27);
 
-        Boton_Atendidos.setText("Vehiculos Atendidos");
+        Boton_Atendidos.setText("Cantidad de vehiculos atendidos");
         Boton_Atendidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_AtendidosActionPerformed(evt);
             }
         });
         jPanel1.add(Boton_Atendidos);
-        Boton_Atendidos.setBounds(150, 180, 150, 27);
+        Boton_Atendidos.setBounds(110, 180, 220, 27);
 
         Boton_Regresar.setText("Regresar");
         Boton_Regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +90,15 @@ LogicReportes R = new LogicReportes();
         });
         jPanel1.add(Boton_Regresar);
         Boton_Regresar.setBounds(10, 260, 100, 27);
+
+        Ver_Atendidos.setText("Vehiculos Atendidos");
+        Ver_Atendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_AtendidosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Ver_Atendidos);
+        Ver_Atendidos.setBounds(150, 220, 150, 27);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ParqueoImagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -132,6 +142,11 @@ LogicReportes R = new LogicReportes();
         OptionPane_Caracteristica1.showMessageDialog(this,R.PagosTotales());
     }//GEN-LAST:event_Boton_PagosActionPerformed
 
+    private void Ver_AtendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_AtendidosActionPerformed
+        GUI.LeerVehiculosAtendidos.VerAtendidos();
+        this.dispose();
+    }//GEN-LAST:event_Ver_AtendidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -174,6 +189,7 @@ LogicReportes R = new LogicReportes();
     private javax.swing.JButton Boton_Porcentaje;
     private javax.swing.JButton Boton_Regresar;
     private javax.swing.JOptionPane OptionPane_Caracteristica1;
+    private javax.swing.JButton Ver_Atendidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
